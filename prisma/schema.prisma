@@ -1,0 +1,75 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model User {
+  id       Int    @id @default(autoincrement())
+  email    String @unique
+  username String @unique
+  password String
+
+  myList      MyListManga[]
+  historique HistoriqueDerniereLecture[]
+}
+
+model MyListManga {
+  mangaName   String
+  userId    Int
+
+  manga Manga @relation(fields: [mangaName], references: [name], onDelete: Cascade)
+  user       User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([mangaName, userId])
+}
+
+model Manga {
+  name        String @id
+  description String
+  tags        MangaTag[]
+  tomes       Tome[]
+  myList MyListManga[]
+}
+
+model HistoriqueDerniereLecture {
+  userId      Int
+  tomeMangaName     String
+  tomeNumero  Int
+  lastPage    Int? // Stocke la dernière page lue (optionnel)
+  time DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  tome Tome @relation(fields: [tomeMangaName, tomeNumero], references: [mangaName, numero], onDelete: Cascade)
+
+  @@id([userId, tomeMangaName, tomeNumero]) // Clé composite pour éviter les doublons
+}
+
+model MangaTag {
+  mangaName String
+  tagLabel   String
+
+  manga Manga @relation(fields: [mangaName], references: [name], onDelete: Cascade)
+  tag   Tag   @relation(fields: [tagLabel], references: [label], onDelete: Cascade)
+
+  @@id([mangaName, tagLabel])
+}
+
+model Tome {
+  mangaName                String
+  numero                    Int
+  manga                     Manga   @relation(fields: [mangaName], references: [name], onDelete: Cascade)
+  HistoriqueDerniereLecture HistoriqueDerniereLecture[]
+
+  @@id([mangaName, numero])
+}
+
+model Tag {
+  label String @id
+  mangas MangaTag[] // Relation inverse ajoutée
+}
