@@ -1,14 +1,16 @@
 
 "use client";
 import { useState } from "react";
-import React from 'react'
-import Link from "next/link";
-import { signUp,login } from "auth/action";
+import React from 'react';
 import { redirect } from "next/navigation";
+import { set } from "react-hook-form";
 
 
+type LoginFormProps = {
+  setIsRegistering: React.Dispatch<React.SetStateAction<boolean>>;
+};
 
-export const LoginForm = () => {
+export const LoginForm = ({ setIsRegistering }: LoginFormProps) => {
   // État du formulaire
   const [formData, setFormData] = useState({ login:"", password: "" });
   const [error, setError] = useState<string | null>(null);
@@ -18,18 +20,27 @@ export const LoginForm = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>){
-      e.preventDefault();
-      const data = {
-          login: formData.login,
-          password: formData.password
-      };
-      const value = await login(data);
-      setError(value);
-      if(value===null){
-          alert("vous êtes connecté");
-      }
-  };
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const res = await fetch("/api/auth/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ login: formData.login, password: formData.password }),
+    });
+
+    if (res.status === 200) {
+      redirect("/private");
+   
+    } else {
+      const data = await res.json();
+      setError(data.error);
+    }
+    
+  }
+  function handleClick(event: React.MouseEvent<HTMLButtonElement>): void {
+    setIsRegistering(true);
+  }
+
   return (
     <div className="bg-[#302F2F] p-8 shadow-lg w-100 h-100 rounded-2xl">
       <div className="mb-10 flex flex-col items-center">
@@ -66,18 +77,21 @@ export const LoginForm = () => {
 
         {/* Bouton de soumission */}
         <button
-          type="submit"
-          className="w-50 text-md py-auto px-auto bg-indigo-600 text-white rounded-full hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-        >
-          Connexion
-        </button>
+        type="submit"
+        className="w-50 text-md py-auto px-auto bg-indigo-600 text-white rounded-full 
+                   hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 
+                   active:shadow-inner active:bg-indigo-800 transition-all duration-150"
+      >
+        Connexion
+      </button>
+      
       </form>
 
       {/* Lien vers l'inscription */}
       <div className="mt-4 text-center">
-        <Link href="/inscription" className="text-sm text-white hover:underline">
+        <button onClick={handleClick} className="text-sm text-white hover:underline">
           Vous n&apos;avez pas de compte ? S&apos;inscrire
-        </Link>
+        </button>
       </div>
     </div>
   );
@@ -85,10 +99,10 @@ export const LoginForm = () => {
 
 
   
-  export const InscriptionForm =() => {
+  export const InscriptionForm =({ setIsRegistering }: LoginFormProps) => {
 
     // État du formulaire
-    const [formData, setFormData] = useState({ email: "",identifiant:"", password: "",passwordConfirmation:"" });
+    const [formData, setFormData] = useState({ email: "",username:"", password: "",passwordConfirmation:"" });
     const [error, setError] = useState<string | null>(null);
   
     // Gestion des changements
@@ -97,18 +111,29 @@ export const LoginForm = () => {
     };
 
     async function handleSubmit(e: React.FormEvent<HTMLFormElement>){
-        e.preventDefault();
-        const data = {
-            email: formData.email,
-            identifiant: formData.identifiant,
-            password: formData.password
-        };
-        const value= await signUp(data);
-        setError(value);
-        if(value===null){
-            redirect("/");
-        }
+      e.preventDefault();
+      setError(null);
+  
+      const res = await fetch("/api/auth/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ 
+          email: formData.email, 
+          username: formData.username,
+          password: formData.password }),
+      });
+  
+      if (res.ok) {
+        console.log("Inscription réussie");
+        setIsRegistering(false);
+      } else {
+        const data = await res.json();
+        setError(data.error);
+      }
     };
+    function handleClick(event: React.MouseEvent<HTMLButtonElement>): void {
+      setIsRegistering(false);
+    }
   
 
     return (
@@ -132,13 +157,13 @@ export const LoginForm = () => {
               </div>
               <div className="mb-4">
                 <input
-                  type="identifiant"
-                  name="identifiant"
+                  type="text"
+                  name="username"
                   required
                   placeholder="identifiant"
                   pattern="^[a-zA-Z0-9_-]+$"
                   title="seul les lettre , les chiffres et les caractères _ et - sont autorisés"
-                  value={formData.identifiant}
+                  value={formData.username}
                   onChange={handleChange}
                   className="block w-70 px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-indigo-500 text-white text-sm"
                 />
@@ -183,9 +208,9 @@ export const LoginForm = () => {
             </form>
           {/* Lien vers la connexion */}
           <div className="mt-4 text-center">
-        <Link href="/" className="text-sm text-white hover:underline">
+        <button onClick={handleClick} className="text-sm text-white hover:underline">
           Vous êtes déjà inscrit ? Se connecter
-        </Link>
+        </button>
       </div>
       <div className="mt-4 text-center">
   </div>

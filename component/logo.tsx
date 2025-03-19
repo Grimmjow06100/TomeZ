@@ -20,6 +20,7 @@ export const LoginLogo = () => {
             alt="Logo de connexion"
             width={140}
             height={140}
+            className="mt-2"
             />
             <h1 style={{ fontFamily: "var(--font-jacques)" }} className={`${jacques.variable} text-9xl`}>
                 TomeZ
@@ -35,16 +36,14 @@ export const LoginLogo = () => {
 export const Logo = () => {
   return (
     <div className="flex flex-col items-left space-x-4">
-        <div className="flex items-center space-x-4">
+        <div className="flex items-center space-x-2">
             <Image 
             src="/TomezLogo.png"
             alt="Logo de connexion"
-            width={50}
-            height={50}
+            width={60}
+            height={60}
+            className="mt-2"
             />
-            <h1 style={{ fontFamily: "var(--font-jacques)" }} className={`${jacques.variable} text-3xl`}>
-                TomeZ
-            </h1>
         </div>
     </div>
   )

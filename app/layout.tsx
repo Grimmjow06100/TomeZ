@@ -15,16 +15,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-      <video
-        className="absolute top-0 left-0 w-full h-full object-cover -z-10"
-        autoPlay
-        loop
-        muted
-        playsInline
-      >
-        <source src="/gojo.mp4" type="video/mp4" />
-      </video>
-        {children}
+      <div>{children}</div>
       </body>
     </html>
   );

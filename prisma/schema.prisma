@@ -3,7 +3,7 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mysql"
   url      = env("DATABASE_URL")
 }
 
@@ -16,34 +16,28 @@ model User {
   password String
   salt     String
 
-  myList      MyListManga[]
+  myList     Manga[]
   historique HistoriqueDerniereLecture[]
-}
-
-model MyListManga {
-  mangaName   String
-  userId    Int
-
-  manga Manga @relation(fields: [mangaName], references: [name], onDelete: Cascade)
-  user       User        @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@id([mangaName, userId])
+  Session    Session[]
 }
 
 model Manga {
-  name        String @id
+  name        String     @id
   description String
   tags        MangaTag[]
+  cover       String
   tomes       Tome[]
-  myList MyListManga[]
+  User        User?      @relation(fields: [userId], references: [id])
+  userId      Int?
 }
 
 model HistoriqueDerniereLecture {
-  userId      Int
-  tomeMangaName     String
-  tomeNumero  Int
-  lastPage    Int? // Stocke la dernière page lue (optionnel)
-  time DateTime @default(now())
+  userId        Int
+  tomeMangaName String
+  tomeNumero    Int
+  lastPage      Int? // Stocke la dernière page lue (optionnel)
+  time          DateTime @default(now())
+  fin           Boolean
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
   tome Tome @relation(fields: [tomeMangaName, tomeNumero], references: [mangaName, numero], onDelete: Cascade)
@@ -53,7 +47,7 @@ model HistoriqueDerniereLecture {
 
 model MangaTag {
   mangaName String
-  tagLabel   String
+  tagLabel  String
 
   manga Manga @relation(fields: [mangaName], references: [name], onDelete: Cascade)
   tag   Tag   @relation(fields: [tagLabel], references: [label], onDelete: Cascade)
@@ -62,15 +56,23 @@ model MangaTag {
 }
 
 model Tome {
-  mangaName                String
+  mangaName                 String
   numero                    Int
-  manga                     Manga   @relation(fields: [mangaName], references: [name], onDelete: Cascade)
+  manga                     Manga                       @relation(fields: [mangaName], references: [name], onDelete: Cascade)
+  images                    Json
   HistoriqueDerniereLecture HistoriqueDerniereLecture[]
 
   @@id([mangaName, numero])
 }
 
 model Tag {
-  label String @id
+  label  String     @id
   mangas MangaTag[] // Relation inverse ajoutée
+}
+
+model Session {
+  token      String   @id @unique @db.VarChar(512) 
+  userId     Int // Clé étrangère vers l'utilisateur
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  ex DateTime @db.Timestamp(0)
 }
