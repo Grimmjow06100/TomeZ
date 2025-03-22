@@ -14,7 +14,6 @@ export async function POST(req: Request) {
       ],
     },
   });
-  console.log(user);
   if (!user) {
     return NextResponse.json({ error: "Identifiant ou mot de passe incorrect" }, { status: 401 });
   }
@@ -39,16 +38,24 @@ export async function POST(req: Request) {
   });
 
   const ex=new Date(Date.now()+1000*60*60*24*7);
+  await prisma.session.deleteMany({
+    where:{
+      userId:user.id
+    }
+  });
   await prisma.session.create({
         data: {
             token,
             userId:user.id,
             ex
         },
-    });
+  });
+  console.log("Utilisateur connecté :", user.username);
+  console.log("Session valide jusqu'au :", ex);
+
+
 
   
-  return NextResponse.json({ success: true }, { status: 200 });
+  return NextResponse.json({ status: 200 });
 }
   
-

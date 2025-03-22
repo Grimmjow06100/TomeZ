@@ -1,10 +1,20 @@
 "use client"
+import { redirect } from 'next/navigation';
 import {Logo} from './logo';
 import Image from 'next/image';
 import { useState } from 'react';
 
 const NavBar = ({ username }: { username: string }) => {
     const [menuOpen, setMenuOpen] = useState(false);
+
+    const handleLogout = async () => {
+        const response = await fetch('/api/auth/logout', {
+            method: 'POST',
+        });
+        if (response.status == 200) {
+            redirect('/');
+        }
+    };
     return (
         <nav className="max-w-full mx-7 flex space-x-8 items-left py-4 relative mb-10">
             <div>
@@ -89,7 +99,7 @@ const NavBar = ({ username }: { username: string }) => {
                 {menuOpen && (
                 <>
                 <button className="pt-10 m-1 px-2 text-left text-[#D3D3D3] transition-all hover:text-white duration-300 ">Compte</button>
-                <button className="m-1 text-left px-2 text-[#D3D3D3] transition-all duration-300 hover:text-white ">Se déconnecter</button>
+                <button onClick={handleLogout} className="m-1 text-left px-2 text-[#D3D3D3] transition-all duration-300 hover:text-white ">Se déconnecter</button>
 
                 </>
             )}

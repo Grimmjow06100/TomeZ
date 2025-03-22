@@ -1,17 +1,187 @@
- 
 [
-
-	{
-		"name" : "Jujutsu Kaisen" 
-
-		"description" : "Jujutsu Kaisen suit Yuji Itadori, un lyc�en dot� d'une force physique exceptionnelle, qui se retrouve impliqu� dans le monde des mal�dictions apr�s avoir aval� un doigt maudit appartenant � un puissant d�mon nomm� Ryomen Sukuna. En rejoignant l'�cole de jujutsu, il apprend � ma�triser ses pouvoirs et � combattre des mal�dictions dangereuses aux c�t�s de ses camarades, Megumi et Nobara, sous la tutelle du professeur Satoru Gojo. Le manga explore des th�mes de lutte contre les mal�dictions, de sacrifice et de destin, avec des combats intenses et une intrigue captivante."
-	}{
-		"name":"17-21"
-		"description":"17-21 raconte l�histoire de Haruka, un jeune gar�on de 17 ans, qui d�couvre qu�il a un pouvoir myst�rieux lui permettant de revenir � l��ge de 21 ans, mais avec des cons�quences inattendues. Ce manga explore des th�mes de croissance, de regrets et de choix de vie � travers les exp�riences d�un personnage jonglant avec son pass� et son futur tout en cherchant � comprendre la v�ritable signification de son pouvoir."
-	}{
-		"name":""
-		"description":""
-	}	
-
-
+  {
+    "name": "17-21",
+    "description": "17-21 raconte l’histoire de Haruka, un jeune garçon de 17 ans, qui découvre qu’il a un pouvoir mystérieux lui permettant de revenir à l’âge de 21 ans, mais avec des conséquences inattendues. Ce manga explore des thèmes de croissance, de regrets et de choix de vie à travers les expériences d’un personnage jonglant avec son passé et son futur tout en cherchant à comprendre la véritable signification de son pouvoir.",
+    "cover": ""
+  },{
+    "name":"22-26",
+    "description":"22-26 suit l’histoire de plusieurs personnages dont les vies sont marquées par des événements mystérieux et des choix difficiles. Le manga explore les expériences de ces individus à travers différentes périodes de leur vie, mettant en lumière leurs luttes intérieures et leurs relations complexes. L’intrigue se concentre sur la quête d’identité et la manière dont le passé, les blessures émotionnelles et les rencontres influencent le présent.",
+    "cover":""
+  },{
+    "name":"Abara",
+    "description":"Dans un monde dystopique où des structures organiques colossales dominent le paysage, l’humanité est menacée par des êtres monstrueux appelés Gaunas. Denji Kudou, un homme capable de se transformer en une créature puissante appelée un “Guudo”, doit affronter ces ennemis tout en naviguant dans un univers sombre et brutal où les lignes entre l’humain et le monstrueux s’effacent.",
+    "cover":""
+  },{
+    "name":"Adabana",
+    "description":"La tranquillité d'une petite ville japonaise, recouverte de neige, est brutalement perturbée par un meurtre odieux. Le corps démembré d'une lycéenne du nom de Mako Igarashi, est retrouvé près d'un lac. Bientôt, Mizuki Aikawa, élève au même lycée que la victime, revendique les faits auprès des forces de police locales. Cependant, alors qu'elle relate les événements, le doute s'invite progressivement dans la tête de ses avocats. Quels lourds secrets Mako et Mizuki partageaient-elle ?",
+    "cover":""
+  },{
+    "name":"Adam et Ève",
+    "description":" Adam et Ève est un manga qui explore les profondeurs de la nature humaine à travers une histoire sombre et provocante. Dans un monde où la violence et les instincts primaires règnent, deux âmes, Adam et Ève, se rencontrent dans un environnement brutal où la survie est une lutte constante. Le récit mêle passion, cruauté et une quête désespérée de sens, tout en confrontant les personnages à leurs désirs les plus primitifs.",
+    "cover":""
+  },{
+    "name":"Adieu Eri",
+    "description":"Adieu Eri raconte l’histoire de Yuta, un adolescent passionné de cinéma, qui décide de filmer les derniers moments de sa mère mourante pour réaliser un court-métrage. Après sa disparition, il rencontre Eri, une fille énigmatique qui l’encourage à continuer à créer des films. Ensemble, ils explorent la puissance des souvenirs, de la fiction et des émotions à travers l’objectif de la caméra, dans un récit poignant et introspectif.",
+    "cover":""
+  },{
+    "name":"Ajin",
+    "description":"Ajin suit l’histoire de Kei Nagai, un lycéen qui découvre qu’il est un Ajin, une créature immortelle traquée par le gouvernement. Lorsqu’il meurt pour la première fois, il se rend compte de ses capacités extraordinaires et devient un fugitif recherché. Le manga explore les thèmes de la survie, de la moralité et de la lutte contre un système oppressif, tout en mettant en lumière la relation complexe entre les humains et les Ajins.",
+    "cover":""
+  },{
+    "name":"Akira",
+    "description":"Akira se déroule dans un futur post-apocalyptique où Tokyo a été détruit et reconstruit après une explosion mystérieuse. L’histoire suit Kaneda, un jeune homme leader d’un gang de motards, et Tetsuo, son ami d’enfance, qui développe des pouvoirs psychiques dangereux après un accident. Luttant contre des forces gouvernementales et des conspirations secrètes, Akira explore les thèmes de la puissance, de la corruption, et de l’humanité dans un monde dévasté.",
+    "cover":""
+  },{
+    "name":"All You Need Is Kill",
+    "description":"L'histoire suit Keiji Kiriya, un soldat qui se retrouve pris dans une boucle temporelle où il revit constamment la même journée de bataille contre une invasion extraterrestre. Chaque fois qu'il meurt, il recommence la journée avec les connaissances acquises précédemment, cherchant à perfectionner ses compétences pour finalement changer le cours de la guerre.",
+    "cover":""
+  },{
+    "name":"Alice in Borderland",
+    "description":"Alice in Borderland suit Arisu, un jeune homme désœuvré, et ses deux amis qui se retrouvent transportés dans un Tokyo parallèle où la réalité est un jeu mortel. Dans ce monde étrange, ils doivent participer à des jeux de survie à haut risque pour échapper à la mort. Chaque jeu, de plus en plus complexe et dangereux, teste leur intelligence, leur force et leur moralité. Le manga explore la psychologie humaine, la survie et la quête de sens dans un univers impitoyable.",
+    "cover":""
+  },{
+    "name":"Another",
+    "description":"Another raconte l’histoire de Kouichi Sakakibara, un adolescent qui emménage dans une nouvelle école où une atmosphère étrange et sinistre règne. Il découvre que sa classe est hantée par une série de morts inexpliquées et que l’une de ses camarades, Mei Misaki, semble être au centre de ce mystère. Au fur et à mesure que les événements tragiques se multiplient, Kouichi et Mei tentent de découvrir la vérité derrière cette malédiction qui pèse sur leur classe.",
+    "cover":""
+  },{
+    "name":"Arcanum",
+    "description":" Arcanum suit l’histoire de jeunes gens qui, après avoir découvert un artefact ancien doté de pouvoirs mystérieux, sont plongés dans un monde où magie et science s’entrelacent. Entre mystères, complots et découvertes surnaturelles, les protagonistes doivent naviguer dans un univers où des forces obscures cherchent à exploiter l’Arcanum à des fins destructrices. Le manga explore les thèmes de la connaissance interdite, du pouvoir et des conséquences de jouer avec l’inconnu.",
+    "cover":""
+  },{
+    "name":"Ascension",
+    "description":"Buntarô Mori n'aime que la solitude. Transféré dans un nouveau lycée, son existence sans saveur est bouleversés quand un camarade, fan d'escalade, lui lance un défi insensé: entreprendre l'ascension d'un bâtiment scolaire sans matériel ni préparation, Buntarô atteint le toit et se sent réellement vivant pour la première fois de sa vie. L'appel de la grimpe sera désormais plus fort que tout. Se rapprocher du ciel pour se sentir vivant. Avec Ascension, Shin'Ichi Sakamoto sublime l'art de l'alpinisme et vous fait vibrer corps et âme, à l'unisson de la haute montagne...",
+    "cover":""
+  },{
+    "name":"Ashita no Joe",
+    "description":" Ashita no Joe raconte l’histoire de Joe Yabuki, un jeune homme turbulent vivant dans les bas-fonds de Tokyo, qui découvre la boxe et trouve une voie pour canaliser sa rage et ses frustrations. Grâce à son talent brut et son désir de se relever, Joe devient un boxeur prometteur. Le manga suit son ascension dans le monde de la boxe, ses rivalités, ses défis personnels et ses luttes contre ses propres démons. C’est un récit poignant sur la détermination, le sacrifice et la quête de rédemption.",
+    "cover":""
+  },{
+    "name":"Astra - Lost in Space",
+    "description":" Astra Lost in Space suit un groupe de lycéens qui, lors d’un voyage scolaire dans l’espace, se retrouvent accidentellement projetés au cœur d’un territoire inconnu, à des années-lumière de leur planète d’origine. En utilisant un vaisseau spatial abandonné, ils doivent trouver leur chemin de retour tout en faisant face à de nombreux défis, secrets et révélations. Le manga mélange aventure, mystère et exploration spatiale, tout en explorant les thèmes de l’amitié, de la survie et de la confiance.",
+    "cover":""
+  },{
+    "name":"Banana Fish",
+    "description":"Banana Fish suit l’histoire d’Aslan Jade Callenreese, un jeune gangster à New York, et d’Eiji Okumura, un photographe japonais, qui se retrouvent mêlés à une intrigue complexe impliquant un mystérieux produit appelé « Banana Fish ». Alors que des secrets de guerre et des complots criminels se dévoilent, les deux héros forment un lien profond tout en luttant contre des ennemis puissants. Le manga explore des thèmes de loyauté, de violence, de corruption et d’amour dans un cadre urbain sombre et réaliste.",
+    "cover":""
+  },{
+    "name":"Baki: Son of Ogre",
+    "description":"Baki: Son of Ogre suit Baki Hanma, un jeune combattant d’exception qui cherche à surpasser son père, Yujiro Hanma, l’homme le plus fort du monde. Dans cette suite de la série “Baki”, Baki fait face à des adversaires redoutables et à des combats encore plus intenses, tout en cherchant à comprendre et à dépasser la brutalité de son père. Le manga mêle arts martiaux extrêmes, pouvoirs physiques impressionnants et psychologie des personnages dans un univers où la force prime avant tout.",
+    "cover":""
+  },{
+    "name":"Bakuon Retto",
+    "description":"Bakuon Retto se déroule dans un futur où la moto est au cœur de la société, et suit l’histoire d’un groupe de jeunes femmes passionnées de moto qui participent à des courses dans un environnement chaotique et compétitif. Le manga explore leurs défis personnels, leur esprit de camaraderie, et les aventures qu’elles vivent en affrontant des rivaux tout en cherchant à surmonter leurs propres limites. Avec une forte dose d’action, de compétition et de développement des personnages, Bakuon Retto célèbre la passion de la moto et la détermination.",
+    "cover":""
+  },{
+    "name":"Bakuman",
+    "description":" Bakuman suit l’histoire de deux lycéens, Moritaka Mashiro et Akito Takagi, qui rêvent de devenir mangakas. Ensemble, ils décident de percer dans l’industrie du manga en travaillant sans relâche pour réaliser leur rêve de publier un manga à succès. Le manga explore les coulisses de la création de mangas, les défis de l’industrie, ainsi que les relations humaines, la persévérance et les sacrifices nécessaires pour atteindre le succès.",
+    "cover":""
+  },{
+    "name":"Bastard!!: Ankoku no Hakaishin",
+    "description":"Bastard!! raconte l’histoire de Dark Schneider, un puissant sorcier qui, après avoir été tué dans un corps précédent, se réveille dans le corps d’un jeune garçon nommé Luche Len-Len. Doté d’un charisme et d’une puissance exceptionnels, Dark Schneider doit faire face à des forces obscures menaçant de détruire le monde. Le manga mélange action, magie, humour et aventure, tout en explorant les thèmes de la rédemption et de la lutte intérieure de son protagoniste complexe.",
+    "cover":""
+  },{
+    "name":"Basilisk",
+    "description":"Basilisk raconte l’histoire de deux clans rivaux de ninjas, les Iga et les Koga, qui sont contraints de s’affronter dans un duel à mort sur ordre du shogun. Chaque clan envoie dix de ses meilleurs guerriers, chacun possédant des pouvoirs uniques, pour se battre jusqu’à ce qu’il ne reste qu’un seul clan en vie. Le manga mélange action intense, stratégie et tragédie, tout en explorant les thèmes de l’amour, de la loyauté et des conséquences du conflit.",
+    "cover":""
+  },{
+    "name":"Battle Royale",
+    "description":" Battle Royale se déroule dans un futur dystopique où un gouvernement autoritaire envoie un groupe d’élèves de collège sur une île isolée pour participer à un jeu mortel. Chaque étudiant reçoit une arme et doit se battre jusqu’à la mort jusqu’à ce qu’il ne reste qu’un survivant. Le manga explore les thèmes de la violence, de la survie, de la morale et des relations humaines dans un environnement extrême et impitoyable, où chaque choix peut signifier la vie ou la mort.",
+    "cover":""
+  },{
+    "name":"Beastars",
+    "description":"Beastars se déroule dans un monde peuplé d’animaux anthropomorphes et suit Legoshi, un loup gris étudiant dans une école secondaire, qui lutte avec ses instincts carnivores et sa nature douce. L’histoire explore ses relations complexes avec d’autres étudiants, notamment une lapine nommée Haru, tout en abordant des thèmes comme les préjugés, l’identité, la sexualité et la violence dans une société où les carnivores et les herbivores coexistent difficilement.",
+    "cover":""
+  },{
+    "name":"Beast Complex",
+    "description":"Beast Complex est une série de récits courts se déroulant dans le même univers que Beastars, où différents animaux anthropomorphes vivent et interagissent dans une société marquée par des tensions raciales et sociales entre carnivores et herbivores. Chaque histoire explore les conflits intérieurs des personnages, leurs désirs, leurs peurs et leurs relations, tout en mettant en lumière les thèmes de l’identité, de l’acceptation et des stéréotypes dans un monde complexe et nuancé.",
+    "cover":""
+  },{
+    "name":"Beck",
+    "description":"Beck suit l’histoire de Yukio “Koyuki” Tanaka, un adolescent ordinaire qui découvre sa passion pour la musique après avoir rencontré un groupe de rock, Beck. En rejoignant le groupe, Koyuki et ses nouveaux amis font face à des défis personnels et professionnels dans leur quête de succès et de reconnaissance. Le manga explore la montée en puissance du groupe, les luttes internes de ses membres, et les hauts et bas de l’industrie musicale, tout en mettant en valeur l’amitié, la persévérance et l’amour de la musique.",
+    "cover":""
+  },{
+    "name":"Beelzebub",
+    "description":"Beelzebub raconte l’histoire d’Oga Tatsumi, un délinquant du lycée Ishiyama, qui se retrouve responsable de Beelzebub, le bébé démoniaque destiné à devenir le seigneur des démons. Alors qu’Oga tente de se débarrasser de l’enfant, il se retrouve plongé dans un monde de conflits entre démons, anges et autres créatures surnaturelles. Le manga mêle comédie, action et surnaturel, tout en explorant la relation improbable entre Oga et Beelzebub, tout en affrontant divers ennemis et défis.",
+    "cover":""
+  },{
+    "name":"Berserk",
+    "description":"Berserk suit Guts, un mercenaire solitaire marqué par une enfance traumatisante, qui se lance dans une quête de vengeance contre son ancien ami Griffith, devenu un démon. À travers des batailles sanglantes, des rencontres avec des créatures surnaturelles et des moments de profonde introspection, Guts lutte pour sa survie dans un monde sombre et brutal. Le manga explore des thèmes de l’amitié, de la trahison, du destin et du combat contre des forces au-delà de l’humanité, tout en mettant en lumière la résilience et la souffrance de ses personnages.",
+    "cover":""
+  },{
+    "name":"Berserk of Gluttony",
+    "description":"Berserk of Gluttony suit Fate, un jeune homme qui possède un pouvoir maudit appelé “Gluttony”, qui lui permet d’absorber les compétences et les pouvoirs de ceux qu’il dévore. Après avoir découvert la véritable portée de son pouvoir, Fate se lance dans un voyage de vengeance et de rédemption, affrontant des ennemis de plus en plus puissants. Le manga explore des thèmes de pouvoir, de corruption et de survie dans un monde où les monstres et les aventuriers luttent pour leur place, tout en mettant en évidence la lutte intérieure du protagoniste.",
+    "cover":""
+  },{
+    "name":"Bestiarius",
+    "description":"Bestiarius se déroule dans une époque antique où les gladiateurs s’affrontent dans des arènes pour divertir la foule. L’histoire suit Gaius, un jeune homme qui devient gladiateur afin de venger la mort de sa famille, tuée par des créatures mythologiques. Au fur et à mesure qu’il combat des bêtes gigantesques et des adversaires humains, Gaius se lie d’amitié avec ses compagnons d’armes tout en cherchant à démêler les mystères de son passé. Le manga mêle action intense, mythologie et exploration de la nature humaine à travers les batailles sanglantes de l’arène.",
+    "cover":""
+  },{
+    "name":"Bibliomania",
+    "description":"Bibliomania suit l’histoire de Chihiro, un jeune homme passionné par les livres et la lecture. Il se retrouve entraîné dans une aventure étrange après avoir découvert un livre ancien qui semble avoir une vie propre. À travers des rencontres avec des personnages énigmatiques et des mystères littéraires, Chihiro se lance dans une quête pour déchiffrer les secrets cachés entre les pages. Le manga explore l’amour de la lecture, le pouvoir des livres et l’impact que l’imaginaire peut avoir sur la réalité.",
+    "cover":""
+  },{
+    "name":"Billy Bat",
+    "description":"Billy Bat suit l’histoire de Kevin Yamagata, un mangaka d’origine japonaise vivant aux États-Unis, qui découvre un étrange personnage de bande dessinée nommé Billy Bat, semblant prédire des événements réels. Alors qu’il explore le mystère autour de ce personnage et de ses origines, Kevin se retrouve plongé dans un complot complexe qui traverse l’histoire mondiale, mêlant complots politiques, théories du complot et mystères historiques. Le manga aborde des thèmes de destin, de manipulation, et du pouvoir des histoires à travers les âges.",
+    "cover":""
+  },{
+    "name":"Black Cat",
+    "description":"Black Cat suit l’histoire de Train Heartnet, un ancien assassin d’élite surnommé « Black Cat », qui travaille désormais comme un chasseur de primes. Malgré son passé sanglant, Train mène une vie plus calme, mais se retrouve bientôt impliqué dans des conflits liés à son ancien métier. Il forme des liens avec de nouveaux alliés tout en faisant face à des ennemis redoutables. Le manga mêle action, aventure et drame, explorant la rédemption, la loyauté et les conséquences des choix du passé.",
+    "cover":""
+  },{
+    "name":"Black Clover",
+    "description":"Black Clover suit Asta, un jeune garçon né sans aucune magie dans un monde où la magie est omniprésente. Malgré cela, il rêve de devenir le “Roi Magicien” et de protéger son royaume. Avec son ami Yuno, un prodige magique, Asta se lance dans des aventures remplies de combats, de sorcellerie et de rivalités, cherchant à surmonter ses limites et à prouver sa valeur. Le manga explore des thèmes de persévérance, de camaraderie et de la lutte contre l’adversité.",
+    "cover":""
+  },{
+    "name":"Black Torch",
+    "description":"Black Torch suit Jiro Azuma, un jeune homme qui possède le pouvoir de communiquer avec les animaux grâce à un mystérieux artefact. Après avoir sauvé un chat surnaturel nommé Rago, Jiro se retrouve impliqué dans un combat entre humains et créatures surnaturelles. En tant que membre d’une organisation secrète, il doit protéger les innocents tout en affrontant des ennemis puissants. Le manga mêle action, aventures surnaturelles et exploration des liens entre humains et créatures magiques.",
+    "cover":""
+  },{
+    "name":"Blame",
+    "description":"Blame! se déroule dans un futur lointain, dans un monde cybernétique dévasté où l’humanité est en déclin. L’histoire suit Killy, un solitaire armé d’un puissant fusil, qui traverse des villes gigantesques et des paysages désolés à la recherche d’un humain portant la clé génétique pour sauver l’humanité. Le manga est une exploration de la survie dans un environnement technologique chaotique, avec une forte ambiance de science-fiction, de cyberpunk, et des thèmes de quête et de solitude.",
+    "cover":""
+  },{
+    "name":"Bleach",
+    "description":"Bleach raconte l’histoire d’Ichigo Kurosaki, un adolescent capable de voir des esprits, qui obtient par accident les pouvoirs d’un Shinigami (un Dieu de la mort) après avoir rencontré Rukia Kuchiki. En tant que nouveau protecteur des âmes, Ichigo doit combattre des esprits malveillants appelés Hollows et aider les âmes à trouver la paix. Le manga explore des thèmes de responsabilité, de sacrifice et de l’équilibre entre le monde des vivants et celui des morts, tout en suivant les batailles épiques d’Ichigo et de ses alliés.",
+    "cover":""
+  },{
+    "name":"Bloody Delinquent Girl Chainsaw",
+    "description":"Bloody Delinquent Girl Chainsaw suit l’histoire de Kii, une lycéenne délinquante au tempérament explosif, qui porte une tronçonneuse géante en guise d’arme. Après un incident qui la transforme en une figure légendaire de la violence scolaire, Kii se retrouve embarquée dans une série de batailles contre d’autres délinquants et créatures surnaturelles. Le manga mélange action, humour et moments poignants, tout en explorant les thèmes de l’identité, de l’amitié et de la rédemption à travers ses personnages hauts en couleur.",
+    "cover":""
+  },{
+    "name":"Blue Exorcist",
+    "description":"Blue Exorcist suit Rin Okumura, un adolescent qui découvre qu’il est le fils de Satan. Déterminé à ne pas suivre les traces de son père, Rin décide de devenir exorciste pour combattre les démons et protéger l’humanité. Alors qu’il rejoint l’Académie d’Exorcisme de True Cross, il doit maîtriser ses pouvoirs infernaux tout en luttant contre des forces démoniaques et des ennemis humains. Le manga explore des thèmes de lutte intérieure, d’identité, de famille et de rédemption, tout en mêlant action et surnaturel.",
+    "cover":""
+  },{
+    "name":"Blue Flag",
+    "description":"Blue Flag raconte l’histoire de Taichi, un lycéen qui se retrouve mêlé à un triangle amoureux complexe entre son ami d’enfance Toma et une camarade de classe, Futaba. Alors que leurs sentiments deviennent de plus en plus confus, Taichi se trouve pris entre l’amitié et l’amour, tout en explorant ses propres émotions et son identité. Le manga aborde des thèmes de l’amour, de l’amitié, de la sexualité et de la recherche de soi, dans une atmosphère douce-amère pleine de réflexion et de réalisme.",
+    "cover":""
+  },{
+    "name":"Blue Hole",
+    "description":"Blue Hole raconte l’histoire de jeunes plongeurs qui explorent les profondeurs d’un mystérieux gouffre sous-marin, connu sous le nom de “Blue Hole”. Alors qu’ils découvrent des secrets enfouis et des créatures marines inconnues, ils sont confrontés à des phénomènes étranges qui remettent en question la frontière entre la réalité et le surnaturel. Le manga mêle suspense, exploration sous-marine et thriller, tout en mettant en lumière la fragilité humaine face à des forces naturelles incontrôlables.",
+    "cover":""
+  },{
+    "name":"Blue Lock",
+    "description":"Blue Lock suit l’histoire de Yoichi Isagi, un jeune footballeur dont l’équipe échoue à se qualifier pour la Coupe du Monde. Afin de former le meilleur attaquant possible pour le Japon, un mystérieux programme appelé “Blue Lock” est lancé. Yoichi rejoint cet entraînement impitoyable où 300 attaquants s’affrontent pour décrocher leur place en équipe nationale. Le manga explore des thèmes de compétition, de persévérance, de rivalité et de l’égoïsme nécessaire pour exceller, dans un univers où seul le plus fort survit.",
+    "cover":""
+  },{
+    "name":"Blue Period",
+    "description":"Blue Period suit Yatora Yaguchi, un lycéen brillant mais indifférent à l’école, qui découvre sa passion pour l’art après avoir visité un musée. Décidé à changer de voie, il se lance dans la peinture, mais doit faire face à des défis personnels et à l’âpreté du monde artistique. Le manga explore les thèmes de l’expression de soi, de la recherche de la passion, de la pression académique et du développement personnel, tout en mettant en lumière la beauté et les difficultés de l’art.",
+    "cover":""
+  },{
+    "name":"Blue Spring Ride",
+    "description":"Blue Spring Ride raconte l’histoire de Futaba Yoshioka, une lycéenne qui retrouve un ancien amour de jeunesse, Kou Mabuchi, après plusieurs années de séparation. Leur relation compliquée se ravive alors qu’ils doivent surmonter les blessures du passé et les défis du présent. Le manga explore les thèmes de l’amour, de la réconciliation, du pardon et de la croissance personnelle à travers les hauts et les bas d’une relation adolescente.",
+    "cover":""
+  },{
+    "name":"Bonne Nuit Punpun",
+    "description":"Bonne Nuit Punpun suit l’histoire de Punpun Punyama, un garçon ordinaire qui grandit dans une famille dysfonctionnelle, confronté à des événements perturbants qui marqueront sa vie. À travers des moments poignants et sombres, le manga explore la perte de l’innocence, la souffrance, les relations complexes et les luttes intérieures de son protagoniste. Le style graphique unique et la narration introspective donnent au manga une profondeur émotionnelle intense, tout en abordant des thèmes de dépression, d’amour et de désespoir.",
+    "cover":""
+  },{
+    "name":"Boruto",
+    "description":"Boruto suit Boruto Uzumaki, le fils de Naruto Uzumaki, désormais Hokage, et de Hinata Hyuga. En grandissant dans l’ombre de son père, Boruto cherche à se démarquer et à trouver sa propre voie en tant que ninja. Le manga explore ses aventures, ses relations avec ses amis et ses adversaires, tout en abordant les défis d’un monde de ninjas pacifié, mais toujours confronté à de nouvelles menaces. Le récit met en lumière les thèmes de l’héritage, de la pression familiale et de la recherche de son propre destin dans un univers désormais plus technologique et modernisé.",
+    "cover":""
+  },{
+    "name":"Boruto - Two Blue Vortex",
+    "description":"Boruto: Two Blue Vortex est la suite directe de “Boruto: Naruto Next Generations”, se déroulant après un saut temporel. L’histoire suit Boruto Uzumaki, maintenant un adolescent un peu plus âgé, qui a été séparé de sa famille et de ses amis suite à des événements dramatiques. Alors qu’il cherche à retrouver son chemin et à comprendre le monde qui a changé autour de lui, il doit faire face à de nouveaux défis et ennemis, tout en portant les conséquences des décisions prises dans le passé. Le manga explore les thèmes de la rédemption, de l’identité et de la responsabilité dans un contexte de tensions mondiales croissantes.",
+    "cover":""
+  }
 ]

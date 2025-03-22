@@ -1,3 +1,4 @@
+
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 import prisma from "prisma/prisma"; // Assure-toi que le chemin est correct
@@ -10,6 +11,7 @@ export async function GET() {
     const token = tokenCookie ? tokenCookie.value : null;
 
     if (!token) {
+      console.error("Aucun token trouvé");
       return NextResponse.json({ error: "Aucun token trouvé" }, { status: 401 });
     }
 
@@ -22,6 +24,7 @@ export async function GET() {
     });
 
     if (!session) {
+      console.error("Session invalide ou expirée");
       return NextResponse.json({ error: "Session invalide ou expirée" }, { status: 403 });
     }
 
@@ -31,13 +34,15 @@ export async function GET() {
     });
 
     if (!user) {
+      console.error("Utilisateur non trouvé");
       return NextResponse.json({ error: "Utilisateur non trouvé" }, { status: 404 });
     }
 
+    console.log("Utilisateur connecté :", user.username);
+    console.log("Session valide jusqu'au :", session.ex);
+
     const data={
-      username: user.username,
-      email: user.email,
-      id: user.id
+      username:user.username
     }
 
     return NextResponse.json(data, { status: 200 });

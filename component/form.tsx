@@ -3,6 +3,7 @@
 import { useState } from "react";
 import React from 'react';
 import { redirect } from "next/navigation";
+import {motion } from 'framer-motion';
 import { set } from "react-hook-form";
 
 
@@ -28,7 +29,7 @@ export const LoginForm = ({ setIsRegistering }: LoginFormProps) => {
       body: JSON.stringify({ login: formData.login, password: formData.password }),
     });
 
-    if (res.status === 200) {
+    if (res.status=== 200) {
       redirect("/private");
    
     } else {
@@ -76,14 +77,16 @@ export const LoginForm = ({ setIsRegistering }: LoginFormProps) => {
         </div>
 
         {/* Bouton de soumission */}
-        <button
+        <motion.button
         type="submit"
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 ,rotate:"2.5deg"}}
         className="w-50 text-md py-auto px-auto bg-indigo-600 text-white rounded-full 
-                   hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 
-                   active:shadow-inner active:bg-indigo-800 transition-all duration-150"
-      >
+                     focus:ring-2 focus:ring-indigo-500 
+                    active:bg-indigo-800 "
+                    >
         Connexion
-      </button>
+      </motion.button>
       
       </form>
 
@@ -199,12 +202,16 @@ export const LoginForm = ({ setIsRegistering }: LoginFormProps) => {
               </div>
     
               {/* Bouton de soumission */}
-              <button
-                type="submit"
-                className=" w-50 text-md py-auto px-auto bg-indigo-600 text-white rounded-full hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-              >
+              <motion.button
+                  type="submit"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 ,rotate:"2.5deg"}}
+                  className="w-50 text-md py-auto px-auto bg-indigo-600 text-white rounded-full 
+                    focus:ring-2 focus:ring-indigo-500 
+                    active:bg-indigo-800 "
+                    >
                 S&apos;inscrire
-              </button>
+              </motion.button>
             </form>
           {/* Lien vers la connexion */}
           <div className="mt-4 text-center">

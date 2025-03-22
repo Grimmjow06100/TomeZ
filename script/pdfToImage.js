@@ -34,3 +34,5 @@ export async function pdfToImage(basePath, output, fileName) {
         console.error("❌ Erreur de conversion :", err);
     }
 }
+
+pdfToImage("C:/Users/samy0/OneDrive/MangaBin/toBeFix/Bleach/Tome24", "C:/Users/samy0/OneDrive/MangaBin/toBeFix/Bleach/Tome24", "tome24.pdf");
