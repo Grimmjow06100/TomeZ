@@ -1,6 +1,5 @@
 import { pdfToImage } from './pdfToImage.js';
 import { cbzToImage } from './cbzToImage.js';
-import { escapeWindowsPath } from './escapeWindowsPath.js';
 import path from 'path';
 import { UnzipAll } from './unzip.js';
 import fs from 'fs';
@@ -8,20 +7,26 @@ import yargs from "yargs";
 import { hideBin } from "yargs/helpers";
 
 async function buildManga(targetPath, zipFilePath, binPath) {
+    if(binPath && !fs.existsSync(binPath)){
+        fs.mkdirSync(binPath, { recursive: true });
+    }
     if (zipFilePath && !fs.existsSync(zipFilePath)) {
         console.log("❌ Le chemin du fichier ZIP est invalide ou n'existe pas.");
         return;
     } else if (zipFilePath) {
+        if(!fs.existsSync(targetPath)){
+            fs.mkdirSync(targetPath, { recursive: true });
+        }
         console.log("📦 Extraction du fichier ZIP...");
-        const promise = await UnzipAll(zipFilePath, targetPath);
+        const promise = await UnzipAll(zipFilePath, targetPath,binPath);
         if (promise) {
             console.log("✔️ Extraction réussie !");
         }
-    } else if (!zipFilePath && !fs.existsSync(targetPath)) {
-        console.log("❌ Le chemin du dossier de sortie est invalide ou n'existe pas.");
-        return;
-    }
+        
 
+    } else if (!zipFilePath && !fs.existsSync(targetPath)) {
+        console.log("❌ Le chemin du dossier est invalide ou n'existe pas.");
+    }
     try {
         const mangaFolders = fs.readdirSync(targetPath).filter(folder =>
             fs.statSync(path.join(targetPath, folder)).isDirectory()

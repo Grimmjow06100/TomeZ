@@ -1,12 +1,11 @@
 "use client";
 
-import NavBar from "component/navBar";
+import NavBar from "@/components/personal/navBar";
 import { useEffect, useState } from "react";
-import MangaBanderole, { Type } from "component/MangaBanderole";
+import MangaBanderole from "@/components/personal/MangaBanderole";
 import { redirect } from "next/navigation";
-import MangaSelection from "component/MangaSelection";
-import { title } from "process";
-import { Container } from "@mui/material";
+import MangaSelection from "@/components/personal/MangaSelection";
+import LoadingPage from "@/app/private/loading";
 
 
 
@@ -39,7 +38,7 @@ export default function UserPage() {
 
         async function fetchMangaBanderole() {
             try {
-                const res = await fetch("/api/manga/banderole");
+                const res = await fetch("/api/manga/listes/banderole");
                 if (res.status === 200) {
                     const data = await res.json();
                     setMangaBanderole(data.covers);
@@ -52,7 +51,7 @@ export default function UserPage() {
         }
         async function fetchMangaClassiques() {
             try {
-                const res = await fetch("/api/manga/classiques");
+                const res = await fetch("/api/manga/listes/classiques");
                 if (res.status === 200) {
                     const data = await res.json();
                     
@@ -67,7 +66,7 @@ export default function UserPage() {
 
         async function fetchMangaPepites() {
             try {
-                const res = await fetch("/api/manga/pepites");
+                const res = await fetch("/api/manga/listes/pepites");
                 if (res.status === 200) {
                     const data = await res.json();
                     setMangaPepites(data.covers);
@@ -78,27 +77,23 @@ export default function UserPage() {
                 console.error("Erreur lors de la récupération des mangas:", error);
             }
         }
-
-        fetchUser();
-        fetchMangaBanderole();
-        fetchMangaClassiques();
-        fetchMangaPepites();
+        Promise.all([fetchUser(), fetchMangaBanderole(),fetchMangaClassiques(),fetchMangaPepites()]);
     }, []); // [] pour ne pas relancer la requête à chaque render
 
     // Affichage d'un message de chargement pendant la récupération des données
-    if (!user || mangaBanderole.length === 0) {
-        return <div></div>;
+    if (!user || mangaBanderole.length === 0 || mangaClassiques.length === 0 || mangaPepites.length === 0) {
+        return <LoadingPage />;
     }
     
     
 
     return (
-        <>
+        <div>
             <NavBar username={user.username} />
             <MangaBanderole list={mangaBanderole} />
             <MangaSelection list={mangaClassiques} title="Les Classiques 🏆"/>
             <MangaSelection list={mangaPepites} title="Les Pépites 💎"/>
 
-        </>
+        </div>
     );
 }

@@ -8,7 +8,7 @@ export async function POST(req: NextRequest) {
 
         const manga=await prisma.manga.findUnique({
             where:{
-                cover:cover
+                cover:cover,
             }
         })
         if(!manga){
@@ -16,14 +16,29 @@ export async function POST(req: NextRequest) {
         }
         const tomes= await prisma.tome.findMany({
             select:{
+                numero:true,
                 cover:true
+            },
+            where:{
+                mangaName:manga.name
+            },
+            orderBy:{
+                numero:"asc" 
+            }
+        });
+        const tags= await prisma.mangaTag.findMany({
+            select:{
+                tagLabel:true
             },
             where:{
                 mangaName:manga.name
             }
         });
         const data={
-            images:tomes.map((element)=>element.cover)
+            name:manga.name,
+            covers:tomes.map((element)=>element.cover),
+            description:manga.description,
+            tags:tags.map((element)=>element.tagLabel),
         }
         return NextResponse.json(data, { status: 200 });
         

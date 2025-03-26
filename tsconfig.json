@@ -1,5 +1,8 @@
 {
   "compilerOptions": {
+    "paths": {
+      "@/*": ["./*"]
+    },
     "baseUrl": ".",
     "target": "ES2017",
     "lib": [

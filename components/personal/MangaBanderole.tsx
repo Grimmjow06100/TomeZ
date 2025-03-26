@@ -1,13 +1,10 @@
 import React from 'react'
 import Image from 'next/image'
 import { useEffect, useState } from 'react';
-import Manga from './Manga';
+import Manga from '@/components/personal/Manga';
 
 
-export enum Type{
-  Manga,
-  Tome
-}
+
 interface MangaBanderoleProp {
   list: string[];  
 }
@@ -18,7 +15,7 @@ const MangaBanderole = ({list}:MangaBanderoleProp) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const totalImages = list.length;
     const [displayedImages, setDisplayedImages] = useState(
-      list.slice(0, 7)
+      list.slice(0, 6)
     );
   
     // Met à jour les images affichées lorsque currentIndex change
@@ -60,7 +57,7 @@ const MangaBanderole = ({list}:MangaBanderoleProp) => {
         >
           
           {displayedImages.map((src, index) => (
-              <Manga key={index} src={src} width="220" height="320" index={index}  />
+              <Manga key={index} src={src} width={220} height={320} index={index}  />
           ))}
         </div>
   

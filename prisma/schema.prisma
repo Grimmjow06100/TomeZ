@@ -68,7 +68,7 @@ model Tome {
   mangaName                 String
   numero                    Int
   manga                     Manga                       @relation(fields: [mangaName], references: [name], onDelete: Cascade)
-  cover                     String @default("")
+  cover                     String @default("") @unique
   images                    Json
   HistoriqueDerniereLecture HistoriqueDerniereLecture[]
 

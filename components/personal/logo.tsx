@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import {Jacques_Francois} from "next/font/google" 
+import { redirect } from "next/navigation";
 
 
 const jacques = Jacques_Francois({
@@ -43,6 +44,7 @@ export const Logo = () => {
             width={60}
             height={60}
             className="mt-2"
+            onClick={() => redirect("/private")}
             />
         </div>
     </div>

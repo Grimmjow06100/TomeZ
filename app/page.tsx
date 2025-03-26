@@ -1,8 +1,8 @@
 
 "use client"
 
-import {LoginLogo} from "component/logo";
-import {InscriptionForm, LoginForm } from "component/form";
+import {LoginLogo} from "@/components/personal/logo";
+import {InscriptionForm, LoginForm } from "@/components/personal/form";
 
 import { useState } from "react";
 
