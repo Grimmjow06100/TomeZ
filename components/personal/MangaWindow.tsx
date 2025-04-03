@@ -1,16 +1,15 @@
 
 import React, { use } from 'react'
 import Image from 'next/image'
-import { useState,useEffect } from 'react'
 import TomeList from '@/components/personal/TomeList';
-import {Jacques_Francois} from "next/font/google"
+import {Jacques_Francois} from "next/font/google";
+import AddToListButton from './addButton';
 const jacques = Jacques_Francois({
   weight:"400",
   variable : "--font-jacques",
   subsets:["latin"],
 
 })
-import { set } from 'react-hook-form';
 
 
 interface MangaWindowProps {
@@ -20,9 +19,10 @@ interface MangaWindowProps {
     covers: string[];
     description: string;
     tags: string[];
+    inMyList:boolean;
 
 }
-const MangaWindow = ({src,index,covers,description,tags,name}:MangaWindowProps) => {
+const MangaWindow = ({src,index,covers,description,tags,name,inMyList}:MangaWindowProps) => {
     
 
     
@@ -30,14 +30,15 @@ const MangaWindow = ({src,index,covers,description,tags,name}:MangaWindowProps) 
   return (
     <>
         <div className='flex p-3 w-auto h-auto space-x-7 items-center items-start'>
-            <div className='flex w-130 items-center'>
+            <div className='flex flex-col w-130 items-center gap-y-5'>
                 <Image
                     src={src}
                     alt={`manga-${index}`}
                     width={320}
                     height={420}
                     className="rounded-lg outline-white outline-4"
-                />   
+                />  
+                <AddToListButton mangaName={name} inMyList={inMyList} ></AddToListButton>
             </div> 
             <div className="flex flex-col w-full h-105 space-y-5">
                 <div className="w-auto h-60">
@@ -67,7 +68,7 @@ const MangaWindow = ({src,index,covers,description,tags,name}:MangaWindowProps) 
                     text-white 
                     ">Tomes</h1>
         </div>
-    <TomeList list={covers} name={name} ></TomeList>
+    <TomeList list={covers} name={name}  ></TomeList>
     </>
   )
 }

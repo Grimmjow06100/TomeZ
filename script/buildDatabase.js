@@ -80,6 +80,24 @@ async function updateCover(mangaPath) {
     
 }
 
+async function updateAllCovers(folderPath) {
+    try{
+        if (!fs.existsSync(folderPath)) {
+            console.error(`Erreur : Le dossier "${folderPath}" n'existe pas.`);
+            return;
+        }
+
+        const mangaFolders = fs.readdirSync(folderPath).filter(file => fs.statSync(path.join(folderPath, file)).isDirectory());
+
+        for (const manga of mangaFolders) {
+            const mangaPath = path.join(folderPath, manga);
+            await updateCover(mangaPath);
+        }
+    }catch (error) {
+        console.error(`Erreur dans updateAllCovers(): ${error.message}`);
+    }
+}
+
 async function createManga(filePath) {
     try {
         if (!fs.existsSync(filePath)) {
@@ -240,9 +258,19 @@ async function createMangaTag(jsonPath){
             demandOption: true,
             description: "The path to the manga folder"
         });
+        yargs.option("all", {
+            alias: "a",
+            type: "boolean",
+            default: false,
+            description: "Update all covers"
+        });
     },
     (argv) => {
-        updateCover(argv.path);
+        if (argv.all) {
+            updateAllCovers(argv.path);
+        } else {
+            updateCover(argv.path);
+        }
     })
     .command("mangaTag", "Create the mangaTag table", (yargs) => {
         yargs.option("path", {
@@ -256,9 +284,6 @@ async function createMangaTag(jsonPath){
         createMangaTag(argv.path);
     })
     .argv;
-
-
-
 
 
 

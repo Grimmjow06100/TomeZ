@@ -37,4 +37,3 @@ export async function cbzToImage(basePath, output, fileName) {
     }
 }
 
-

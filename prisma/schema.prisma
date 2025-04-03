@@ -42,16 +42,16 @@ model Manga {
 
 model HistoriqueDerniereLecture {
   userId        Int
-  mangaName String
+  mangaName     String
   tomeNumero    Int
   lastPage      Int? // Stocke la dernière page lue (optionnel)
   time          DateTime @default(now())
-  fin           Boolean
+  fin           Boolean @default(false)
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
   tome Tome @relation(fields: [mangaName, tomeNumero], references: [mangaName, numero], onDelete: Cascade)
 
-  @@id([userId, mangaName, tomeNumero]) // Clé composite pour éviter les doublons
+  @@id([userId, mangaName]) // Clé composite pour éviter les doublons
 }
 
 model MangaTag {

@@ -3,6 +3,7 @@ import { redirect } from 'next/navigation';
 import {Logo} from './logo';
 import Image from 'next/image';
 import { useState } from 'react';
+import Link from "next/link";
 
 const NavBarSkeleton = ({ username }: { username: string }) => {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -12,7 +13,7 @@ const NavBarSkeleton = ({ username }: { username: string }) => {
             method: 'POST',
         });
         if (response.status == 200) {
-            redirect('/');
+            redirect('/login');
         }
     };
     return (
@@ -21,32 +22,37 @@ const NavBarSkeleton = ({ username }: { username: string }) => {
                 <Logo/>
             </div>
             <div className="flex items-center">
+                
                 <Image src="/home.png" alt="logo" width={25} height={25} className="invert "/>
-                <button className="
-                font-semibold
-                relative 
-                px-4 
-                py-2 
-                text-white 
-                transition-colors 
-                duration-300 
-                hover:text-white 
-                after:absolute 
-                after:left-1/2 
-                after:bottom-0 
-                after:w-0 
-                after:h-1 
-                after:bg-white 
-                after:transition-all 
-                after:duration-300 
-                hover:after:w-full 
-                hover:after:left-0
-                " 
-                onClick={() => redirect("/private")}
-                >Accueil</button>
+                <Link href="/pages/private/home">
+                    <button className="
+                    font-semibold
+                    relative 
+                    px-4 
+                    py-2 
+                    text-white 
+                    transition-colors 
+                    duration-300 
+                    hover:text-white 
+                    after:absolute 
+                    after:left-1/2 
+                    after:bottom-0 
+                    after:w-0 
+                    after:h-1 
+                    after:bg-white 
+                    after:transition-all 
+                    after:duration-300 
+                    hover:after:w-full 
+                    hover:after:left-0
+                    " 
+                    
+                    >Accueil</button>
+                </Link>
             </div>
+    
             <div className="flex items-center ">
                 <Image src="/search.png" alt="logo" width={25} height={25} className="invert"/>
+                <Link href={`/pages/private/recherche`} >
                 <button className="
                 font-semibold
                 relative 
@@ -67,9 +73,11 @@ const NavBarSkeleton = ({ username }: { username: string }) => {
                 hover:after:w-full 
                 hover:after:left-0
                 " >Recherche</button>
+                </Link>
             </div>
             <div className="flex items-center ">
                 <Image src="/add.png" alt="logo" width={25} height={25} className="invert"/>
+                <Link href={`/pages/private/mylist`} >
                 <button className="
                 font-semibold
                 relative 
@@ -90,6 +98,7 @@ const NavBarSkeleton = ({ username }: { username: string }) => {
                 hover:after:w-full 
                 hover:after:left-0
                 " >My List</button>
+            </Link>
             </div>
             <div className="flex flex-col w-50 p-5 absolute hover:bg-[#111111] z-10 right-0 rounded-lg "  onMouseEnter={() => setMenuOpen(true)}
             onMouseLeave={() => setMenuOpen(false)}>

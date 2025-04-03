@@ -102,9 +102,9 @@ async function fixMangaFormat(filePath) {
             console.warn("⚠️ Aucun fichier image trouvé !");
             return;
         }
-        Promise.all(images.map((image, index) =>
-            fs.promises.rename(path.join(tomePath, image), path.join(tomePath, `${index + 1}.png`))
-        ));
+        images.forEach((image, index) =>
+            fs.renameSync(path.join(tomePath, image), path.join(tomePath, `${index + 1}.png`))
+        )
 
     }
 
@@ -162,3 +162,4 @@ yargs(hideBin(process.argv))
     )
     .help()
     .argv;
+

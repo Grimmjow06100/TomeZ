@@ -28,7 +28,7 @@ export const LoginForm = ({ setIsRegistering }: LoginFormProps) => {
     });
 
     if (res.status=== 200) {
-      redirect("/private");
+      redirect("/pages/private/home");
    
     } else {
       const data = await res.json();
@@ -85,7 +85,7 @@ export const LoginForm = ({ setIsRegistering }: LoginFormProps) => {
         <motion.button
         type="submit"
         whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 ,rotate:"2.5deg"}}
+        whileTap={{ scale: 0.9 }}
         className="w-50 text-md py-auto px-auto bg-indigo-600 text-white rounded-full 
                      focus:ring-2 focus:ring-indigo-500 
                     active:bg-indigo-800 "

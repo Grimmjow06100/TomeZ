@@ -3,8 +3,7 @@ import path from 'path';
 import yargs from 'yargs';
 import dotenv from 'dotenv';
 import { hideBin } from "yargs/helpers";
-
-dotenv.config();
+dotenv.config({ path:'../.env'});
 
 
 function buildTomeJson(folderPath, jsonPath) {
@@ -87,3 +86,5 @@ yargs(hideBin(process.argv))
     buildTomeJson(argv.path, argv.json);
   })
   .argv;
+
+

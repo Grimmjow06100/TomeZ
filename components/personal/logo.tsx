@@ -44,7 +44,7 @@ export const Logo = () => {
             width={60}
             height={60}
             className="mt-2"
-            onClick={() => redirect("/private")}
+            onClick={() => redirect("/pages/private/home")}
             />
         </div>
     </div>

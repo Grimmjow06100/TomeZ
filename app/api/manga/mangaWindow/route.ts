@@ -1,10 +1,15 @@
 import { NextResponse ,NextRequest} from "next/server";
+import { getUserId } from "@/lib/cookie";
 import prisma from "prisma/prisma";
 
 
 export async function POST(req: NextRequest) {
     try{
         const {cover} = await req.json();
+        const userId= await getUserId();
+        if(!userId){
+         return NextResponse.json({error:"Utilisateur non trouvé"},{status:404});   
+        }
 
         const manga=await prisma.manga.findUnique({
             where:{
@@ -34,11 +39,23 @@ export async function POST(req: NextRequest) {
                 mangaName:manga.name
             }
         });
+        const historique= await prisma.historiqueDerniereLecture.findFirst({
+            select:{
+                tomeNumero:true,
+                lastPage:true,
+            },
+            where:{
+                mangaName:manga.name,
+                userId:userId,
+                fin:false
+            }
+        });
         const data={
             name:manga.name,
             covers:tomes.map((element)=>element.cover),
             description:manga.description,
             tags:tags.map((element)=>element.tagLabel),
+            historique:historique
         }
         return NextResponse.json(data, { status: 200 });
         
