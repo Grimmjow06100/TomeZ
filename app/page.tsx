@@ -5,7 +5,7 @@ import { redirect } from 'next/navigation'
 
 const Page = () => {
     useEffect(() => {
-        redirect("/pages/private/home")
+        redirect("/pages/login")
     }, [])
   return (
     <></>

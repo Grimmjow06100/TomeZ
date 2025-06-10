@@ -13,7 +13,7 @@ const NavBarSkeleton = ({ username }: { username: string }) => {
             method: 'POST',
         });
         if (response.status == 200) {
-            redirect('/login');
+            redirect('/pages/login');
         }
     };
     return (
