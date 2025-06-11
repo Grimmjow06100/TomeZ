@@ -27,8 +27,8 @@ export default function Login() {
       <div className="absolute top-10 left-10 flex"> 
         <LoginLogo/>
       </div>
-      <div>
-        {isRegistering ? <InscriptionForm setIsRegistering={setIsRegistering}/> : <LoginForm setIsRegistering={setIsRegistering}/>}
+      <div className="text-white text-8xl">
+          <h1>Mon App Web</h1> 
         </div>
     </main>
   );
