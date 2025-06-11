@@ -63,34 +63,7 @@ export default function UserPage() {
     
     return (
         <div className="overflow-x-hidden">
-            <div
-    className="relative w-full h-180 mb-15">
-
-                {/* Vidéo en arrière-plan */}
-                <video 
-                    autoPlay 
-                    loop 
-                    muted 
-                    className="absolute top-0 left-0 w-full h-full object-cover"
-                    src="/luffy.mp4"
-                />
-                <motion.button 
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                    onClick={() => redirect(`/pages/private/lecture/One Piece/${state.mangaData.enCours.some(manga => manga.name === "One Piece") ? state.mangaData.enCours.find(manga => manga.name === "One Piece")?.numero : 1}`)}
-                    className="absolute bottom-20 left-20 h-20 w-50 text-2xl  z-1 bg-white/10 backdrop-blur-sm p-4 rounded-lg outline-2">Lire One Piece</motion.button>
-                {/* Overlay avec effet de fondu en bas */}
-                <div className="absolute bottom-0 left-0 w-full h-40 bg-gradient-to-t from-black/80 to-transparent"></div>
-
-                {/* Navbar en superposition */}
-                <div className="fixed z-2 w-full">
-                    {navBar}
-                </div>
-            </div>
-            {/* Sections de mangas */}
-            <Reading list={state.mangaData.enCours} username={state.user}/>
-            <MangaBanderole list={state.mangaData.classiques} title="Les Classiques 🏆" username={state.user}/> 
-            <MangaBanderole list={state.mangaData.pepites} title="Les Pépites 💎" username={state.user}/>
+           
         </div>
     );
 }

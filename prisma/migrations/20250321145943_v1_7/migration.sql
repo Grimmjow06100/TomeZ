@@ -1,2 +1,0 @@
--- AlterTable
-ALTER TABLE `tome` ADD COLUMN `cover` VARCHAR(191) NOT NULL DEFAULT '';
