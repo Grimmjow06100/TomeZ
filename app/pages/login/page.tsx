@@ -18,15 +18,16 @@ export default function Login() {
     }
   const handleClick = async () => {
     try {
-      const response = await fetch("/api/test", options);
-
-      if (response.ok) {
-        console.log("Connexion réussie");
-      } else {
-        console.error("Échec de la requête : ", response.status);
+      const response = await fetch('/api/test',options); // ou '/api/hello' selon ta route
+      if (!response.ok) {
+        throw new Error('Erreur serveur');
       }
+      const data = await response.json();
+      console.log('Utilisateurs récupérés :', data.users);
+      return data.users;
     } catch (error) {
-      console.error("Erreur de connexion :", error);
+      console.error('Erreur lors de la récupération des utilisateurs :', error);
+      return [];
     }
   };
 

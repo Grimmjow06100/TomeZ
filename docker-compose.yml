@@ -1,8 +1,35 @@
-version: '3'
+version: '3.9'
 
 services:
   app:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: tomez-app-root
+    container_name: tomez-app-root-container
     ports:
       - "3000:3000"
       - "8080:8080"
+    networks:
+      - tomez-network
+  mysql:
+      image: mysql-tomez
+      container_name: mysql-tomez-container
+      environment:
+        MYSQL_ROOT_PASSWORD: admin
+        MYSQL_DATABASE: tomez
+      ports:
+        - "3307:3306"
+      volumes:
+        - mysql-data:/var/lib/mysql
+      networks:
+        - tomez-network
+
+networks:
+  tomez-network:
+    external: true
+
+volumes:
+  mysql-data:
+    external: true
+    
