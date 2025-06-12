@@ -1,4 +1,4 @@
-version: '3'
+version: '3.9'
 
 services:
   app:
@@ -22,6 +22,9 @@ services:
 
 networks:
   tomez-network:
+    external: true
 
 volumes:
   mysql-data:
+    external: true
+    
