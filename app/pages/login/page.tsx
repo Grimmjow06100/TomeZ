@@ -2,14 +2,33 @@
 "use client"
 
 import {LoginLogo} from "@/components/personal/logo";
-import {InscriptionForm, LoginForm } from "@/components/personal/form";
+import {motion} from 'framer-motion';
 
-import { useState } from "react";
+
 
 
 export default function Login() {
+  
+  const options ={
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+        }
+      
+    }
+  const handleClick = async () => {
+    try {
+      const response = await fetch("/api/test", options);
 
-  const [isRegistering, setIsRegistering] = useState(false); // false = affichage du LoginForm
+      if (response.ok) {
+        console.log("Connexion réussie");
+      } else {
+        console.error("Échec de la requête : ", response.status);
+      }
+    } catch (error) {
+      console.error("Erreur de connexion :", error);
+    }
+  };
 
 
   return (
@@ -27,8 +46,24 @@ export default function Login() {
       <div className="absolute top-10 left-10 flex"> 
         <LoginLogo/>
       </div>
-      <div className="text-white text-8xl">
-          <h1>Mon App Web</h1> 
+      <div >
+          <motion.button
+              onClick={handleClick}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              className="
+              w-50 
+              text-md 
+              py-auto 
+              px-auto 
+              bg-indigo-600 
+              rounded-full 
+              focus:ring-2 
+              focus:ring-indigo-500 
+              active:bg-indigo-800 "
+           >
+              Connexion
+          </motion.button>
         </div>
     </main>
   );
