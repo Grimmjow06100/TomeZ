@@ -4,11 +4,12 @@ import { useEffect } from 'react'
 import { redirect } from 'next/navigation'
 
 const Page = () => {
-    useEffect(() => {
-        redirect("/pages/login")
-    }, [])
+    
   return (
-    <></>
+    <>
+      <p className='text-xl'>Police d&apos; écriture </p>
+    
+    </>
   )
 }
 
