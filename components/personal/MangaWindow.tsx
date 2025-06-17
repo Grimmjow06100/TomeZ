@@ -2,15 +2,8 @@
 import React, { use } from 'react'
 import Image from 'next/image'
 import TomeList from '@/components/personal/TomeList';
-import {Jacques_Francois} from "next/font/google";
 import AddToListButton from './addButton';
-const jacques = Jacques_Francois({
-  weight:"400",
-  variable : "--font-jacques",
-  subsets:["latin"],
-
-})
-
+import styled from 'styled-components'
 
 interface MangaWindowProps {
     src: string;
@@ -22,6 +15,12 @@ interface MangaWindowProps {
     inMyList:boolean;
 
 }
+
+const Name = styled.h1 `
+  font-family: var(--font-jacques);
+  font-size:50px;
+`
+
 const MangaWindow = ({src,index,covers,description,tags,name,inMyList}:MangaWindowProps) => {
     
 
@@ -42,7 +41,7 @@ const MangaWindow = ({src,index,covers,description,tags,name,inMyList}:MangaWind
             </div> 
             <div className="flex flex-col w-full h-105 space-y-5">
                 <div className="w-auto h-60">
-                <h1 style={{ fontFamily: "var(--font-jacques)" }} className={`${jacques.variable} text-white font-bold text-5xl`}>{name}</h1>
+                <Name>{name}</Name>
                 </div>
                 <div className='flex flex-col  w-auto min-h-55 '>
                     <h1 className="text-white font-bold text-2xl">Synopsis</h1>

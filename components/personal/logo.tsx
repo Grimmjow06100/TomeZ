@@ -1,15 +1,15 @@
 import React from "react";
 import Image from "next/image";
-import {Jacques_Francois} from "next/font/google" 
 import { redirect } from "next/navigation";
+import styled from 'styled-components'
 
 
-const jacques = Jacques_Francois({
-  weight:"400",
-  variable : "--font-jacques",
-  subsets:["latin"],
 
-})
+
+const LogoTitle = styled.h1 `
+  font-family: var(--font-jacques);
+  font-size:110px;
+`
 
 
 export const LoginLogo = () => {
@@ -21,13 +21,11 @@ export const LoginLogo = () => {
             alt="Logo de connexion"
             width={140}
             height={140}
-            className="mt-2"
+            className="mt-8"
             />
-            <h1 style={{ fontFamily: "var(--font-jacques)" }} className={`${jacques.variable} text-9xl`}>
-                TomeZ
-            </h1>
+            <LogoTitle>Tomez</LogoTitle>
         </div>
-        <p className="text-3xl text-gray-600 dark:text-gray-200">
+        <p className="text-3xl">
           Plongez dans l&apos;univers du manga.
         </p>
     </div>

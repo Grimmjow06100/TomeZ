@@ -1,5 +1,16 @@
+
 import type { Metadata } from "next";
-import "./globals.css";
+import {Jacques_Francois} from "next/font/google" 
+import './globals.css'
+
+
+const jacques = Jacques_Francois({
+  weight:"400",
+  variable : "--font-jacques",
+  subsets:["latin"],
+})
+
+
 
 
 export const metadata: Metadata = {
@@ -13,10 +24,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="fr" className={jacques.variable}>
       <body>
         <div>
-          {children}
+          {children }
         </div>
       </body>
     </html>

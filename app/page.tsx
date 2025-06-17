@@ -2,15 +2,14 @@
 import React from 'react'
 import { useEffect } from 'react'
 import { redirect } from 'next/navigation'
+import {LoginLogo} from '@/components/personal/logo'
 
-const Page = () => {
-    
+export default function ScrollableBox() {
   return (
-    <>
-      <p className='text-xl'>Police d&apos; écriture </p>
-    
-    </>
-  )
+    <div
+      className="h-[400vh]"
+    >
+      
+    </div>
+  );
 }
-
-export default Page
