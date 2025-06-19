@@ -1,24 +1,6 @@
 version: '3.9'
 
 services:
-  app:
-    build: .
-    ports:
-      - "3000:3000"
-      - "8080:8080"
-    networks:
-      - tomez-network
-  mysql:
-      image: mysql
-      environment:
-        MYSQL_ROOT_PASSWORD: admin
-        MYSQL_DATABASE: tomez
-      ports:
-        - "3307:3306"
-      volumes:
-        - mysql-data:/var/lib/mysql
-      networks:
-        - tomez-network
   nginx:
     image: nginx:latest
     container_name: nginx-tomez
