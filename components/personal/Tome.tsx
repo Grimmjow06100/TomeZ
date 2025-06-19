@@ -67,7 +67,7 @@ function Tome({ src, width, height, numero, name, deleteOption }: Props) {
             </Link>
         </div>
         {deleteOption && isHovered && (
-          <button onClick={()=> deleteOption.handler(deleteOption.index)} className='flex justify-center opacity-50 hover:opacity-100 transition-opacity duration-300 mt-5'>
+          <div onClick={()=> deleteOption.handler(deleteOption.index)} className='flex justify-center opacity-50 hover:opacity-100 transition-opacity duration-300 mt-5'>
             <Image
               src="/trash.png"
               alt="delete-icon"
@@ -75,7 +75,7 @@ function Tome({ src, width, height, numero, name, deleteOption }: Props) {
               height={25}
               className="invert "
             />
-          </button>
+          </div>
         )}
       </div>
     </>

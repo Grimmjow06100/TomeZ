@@ -14,7 +14,7 @@ services:
     networks:
       - tomez-network
   mysql:
-      image: mysql-tomez
+      image: mysql:latest
       container_name: mysql-tomez-container
       environment:
         MYSQL_ROOT_PASSWORD: admin

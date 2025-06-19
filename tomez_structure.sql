@@ -109,24 +109,6 @@ CREATE TABLE `mylist` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `session`
---
-
-DROP TABLE IF EXISTS `session`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `session` (
-  `token` varchar(512) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `userId` int NOT NULL,
-  `ex` timestamp NOT NULL,
-  PRIMARY KEY (`token`),
-  UNIQUE KEY `Session_token_key` (`token`),
-  KEY `Session_userId_fkey` (`userId`),
-  CONSTRAINT `Session_userId_fkey` FOREIGN KEY (`userId`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
 -- Table structure for table `tag`
 --
 
@@ -157,6 +139,22 @@ CREATE TABLE `tome` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
+
+--
+-- Table structure for table `Selection`
+--
+
+DROP TABLE IF EXISTS `Selection`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `Selection` (
+  `selectionName` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `mangaName` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+
+  PRIMARY KEY (`selectionName`),
+  CONSTRAINT `Selection_mangaName_fkey` FOREIGN KEY (`mangaName`) REFERENCES `manga` (`name`) ON DELETE CASCADE ON UPDATE CASCADE
+
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

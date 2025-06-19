@@ -149,9 +149,9 @@ const Manga = ({ src, width, height, index,inMyList }: Props) => {
           </div>
         ):<Skeleton key={index} className='w-[220px] h-[320px] bg-zinc-700 rounded-lg'/>}
         {isHovered &&(
-            <button onClick={openModal} className='flex justify-center opacity-50 hover:opacity-100 transition-opacity duration-300 mt-4'>
+            <div onClick={openModal} className='flex justify-center opacity-50 hover:opacity-100 transition-opacity duration-300 mt-4'>
               <Image src="/down-arrow.png" alt="logo" width={50} height={50} className="invert" />
-            </button>
+            </div>
 
         )}
       </div>

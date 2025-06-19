@@ -11,9 +11,52 @@
     --color-gray-300: #e3e5e8;
     --color-gray-200: #ebedef;
     --color-gray-100: #f2f3f5;
-    --color-primary: #5865f2;
-    --color-custom-dark: #ff3737; 
+    --color-background: #141414;
+    --animate-grow: grow 0.3s ease-in-out ;
+    --animate-shrink:shrinkOut 0.3s ease-in-out;
+    --animate-image:imageClick 0.3s ease-in-out;
+
+
+    
+    @keyframes grow {
+      from {
+        transform: scale(0);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    @keyframes shrinkOut {
+      from {
+        transform: scale(1);
+        opacity: 1;
+      }
+      to {
+        transform: scale(0.5);
+        opacity: 0;
+      }
+    }
+
+    @keyframes imageClick {
+      from {
+        transform:scale(0.95);
+      }
+      to {
+        transform:scale(1);
+      }
+    }
+
+   
+
+
+
+
 }
+
+
 
 
 :root {
