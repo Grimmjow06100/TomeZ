@@ -1,55 +1,16 @@
-import { useState,useEffect } from "react";
+import { useState } from "react";
 
 import { motion } from "framer-motion";
-import {mutate} from "swr";
 import Image from "next/image";
 
-const AddToListButton = ({ mangaName,inMyList}: { mangaName: string ;inMyList:boolean}) => {
+const AddToListButton = ({ name}: { name: string }) => {
   const [added, setAdded] = useState<boolean>(false); // Par défaut, on charge après
 
-// Charger l'état depuis localStorage dès le montage
-useEffect(() => {
-  const storedValue = localStorage.getItem(`manga-${mangaName}`);
-  if (storedValue !== null) {
-    setAdded(JSON.parse(storedValue)); // Charger la valeur sauvegardée
-  } else {
-    setAdded(inMyList); // Si pas de valeur, utiliser la valeur de l'API
-  }
-}, [mangaName,inMyList]); // inMyList ajouté pour réagir aux changements externes
-
   const handleClick = async () => {
-    const newState = !added;
-    setAdded(newState);
-    const body = {
-      mangaName: mangaName,
-    };
+    setAdded(!added);
      // Sauvegarde immédiate dans localStorage
-    localStorage.setItem(`manga-${mangaName}`, JSON.stringify(newState));
-    const options ={
-        method: "PUT",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(body),
-    }
-    if(!added){
-        fetch("/api/manga/listes/MyList/add", options).then((response) => {
-            if (!response.ok) {
-                throw new Error(`Erreur ${response.status}: ${response.statusText}`);
-            }
-            mutate("/api/manga/listes/MyList"); // Mettre à jour le cache SWR
-        })
-        
-    }
-    else{
-        fetch("/api/manga/listes/MyList/remove", options).then((response) => {
-            if (!response.ok) {
-                throw new Error(`Erreur ${response.status}: ${response.statusText}`);
-            }
-            mutate("/api/manga/listes/MyList"); // Mettre à jour le cache SWR
-            console.log("Retiré de la liste !"); // Log pour le débogage
-        })
-    }
+    localStorage.setItem(`manga-${name}`, JSON.stringify(!added));
+  
   };
 
   return (

@@ -1,18 +1,11 @@
-/** @type {import('next').NextConfig} */
-import dotenv from 'dotenv';
-dotenv.config();
-const nextConfig = {
-    images: {
-      domains: [process.env.HOSTNAME],
-        remotePatterns: [
-          {
-            protocol: process.env.PROTOCOL,
-            hostname: process.env.HOSTNAME,
-            port: process.env.PORT,
-            pathname: process.env.PATHNAME,
-          },
-        ],
-      },
-};
+/** @type @type {import('next').NextConfig} */
+
+  const nextConfig = {
+     images: {
+        remotePatterns:[new URL('http://localhost:8080/mangas/**')],
+        unoptimized: true
+      }
+
+  };
 
 export default nextConfig;

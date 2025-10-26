@@ -5,40 +5,38 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: tomez-app-root
-    container_name: tomez-app-root-container
+    image: tomez
+    container_name: tomez-app
     depends_on:
-      - mysql
+      - postgres
     ports:
-      - "3000:3000"
+      - "3001:3001"
     networks:
       - tomez-network
-  mysql:
-      image: mysql:latest
-      container_name: mysql-tomez-container
+  postgres:
+      image: postgres:latest
+      container_name: tomez-postgres
       environment:
-        MYSQL_ROOT_PASSWORD: admin
-        MYSQL_DATABASE: tomez
-      ports:
-        - "3307:3306"
+        POSTGRES_USER: samy
+        POSTGRES_PASSWORD: root
+        POSTGRES_DB: tomez
+      expose:
+       - "5432"
       volumes:
-        - mysql-data:/var/lib/mysql
+        - ./database/data:/var/lib/postgresql/data
+        - ./database/init-scripts:/docker-entrypoint-initdb.d
       networks:
         - tomez-network
   nginx:
     image: nginx:latest
-    container_name: nginx-tomez
+    container_name: tomez-nginx
     ports:
-      - "8080:80"
+     - "8080:80"
     volumes:
       - "C:/Users/samy0/OneDrive/Manga:/usr/share/nginx/html/mangas:ro"
       - "./nginx.conf:/etc/nginx/nginx.conf:ro"
 
 networks:
   tomez-network:
-    external: true
-
-volumes:
-  mysql-data:
-    external: true
+   
     

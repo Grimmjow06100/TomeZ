@@ -2,162 +2,155 @@
 import { useState, useEffect } from 'react';
 import { motion,AnimatePresence} from 'framer-motion';
 import Image from 'next/image';
-import MangaWindow from './MangaWindow';
+import {StyledDiv} from './style'
 import Link from 'next/link';
 import { Skeleton } from '../ui/skeleton';
 import { createPortal } from "react-dom";
+import {TomeGrid} from './Tome';
+import styled from "styled-components"
+import AddToListButton from './addButton';
+import { MangaProps } from '@/lib/interface';
+import {MangaName} from './style'
 
-interface Props {
-  src: string;
-  width: number;
-  height: number;
-  index: number;
-  inMyList: boolean;
+
+const MangaWindow = ({description,tags,name,nbrtomes}:MangaProps) => {
+  return (
+    <>
+        <div className='flex p-3 w-auto h-auto space-x-7 items-center'>
+            <div className='flex flex-col w-130 items-center gap-y-5'>
+                <Image
+                    src={`http://localhost:8080/mangas/${name}/Tome1/1.png`}
+                    alt={`manga`}
+                    width={320}
+                    height={420}
+                    className="rounded-lg outline-white outline-4"
+                />  
+                <AddToListButton name={name} ></AddToListButton>
+            </div> 
+            <div className="flex flex-col w-full h-105 space-y-5">
+                <div className="w-auto h-60">
+                <MangaName>{name}</MangaName>
+                </div>
+                <div className='flex flex-col  w-auto min-h-55 '>
+                    <h1 className="text-white font-bold text-2xl">Synopsis</h1>
+                    <p className='text-gray-500 italic'>{description}</p>
+                </div>
+                <div className='flex flex-col h-full w-auto '>
+                    <h1 className="text-white font-bold text-2xl">Genres</h1>
+                    <div className="flex space-x-1"  >
+            
+                        <h1 className='text-gray-500 italic' >
+                            {tags}
+                        </h1>
+                
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div className='flex mt-10  h-auto w-auto space-x-10'>
+            <h1 className="
+                    font-bold
+                    text-2xl
+                    relative 
+                    text-white 
+                    ">Tomes</h1>
+        </div>
+        <TomeGrid name={name} nbrtomes={nbrtomes} ></TomeGrid>
+    </>
+  )
 }
-interface MangaData{
-  name: string;
-  covers: string[];
-  description: string;
-  tags: string[];
-  historique:{
-        tomeNumero: number;
-        lastPage: number | null;
-    } | null;
 
-}
 
-async function createHistorique(body: {mangaName: string; numero: number }) {
-  try {
-      const options = {
-          method:"PUT",
-          headers: {
-              "Content-Type": "application/json",
-          },
-          body: JSON.stringify(body),
-      };
-      const response = await fetch("/api/manga/historique/create", options);
+export const Manga = ({ name,nbrtomes ,description,tags} : MangaProps ) => {
+  const [mangaOpen, setMangaOpen] = useState(false);
+  const [isHovered, setHovered] = useState(false);
+  const [isClosing,setClosing] = useState(false);
+    const handleClose = () => {
+      setClosing(true);
+      setTimeout(() => {
+        setClosing(false); // utile si tu rouvres
+        setMangaOpen(false);
+      }, 250); // même durée que l'animation
 
-      if (!response.ok) {
-          throw new Error(`Erreur ${response.status}: ${response.statusText}`);
+    };
+    function Modal() {
+        return createPortal(
+          <StyledDiv background='rgba(0,0,0,0.75)'
+              className="fixed inset-0 flex justify-center items-start z-3"
+              onClick={handleClose}
+            >
+              <div
+                className={`bg-black opacity-90 p-10 flex flex-col  w-3/5  max-h-screen overflow-y-auto origin-top-left mt-20  z-4 ${
+                isClosing ? 'animate-shrink' : 'animate-grow'
+                }`}
+                onClick={(e) => e.stopPropagation()}
+              >
+                <MangaWindow
+                  name={name}
+                  tags='Indisponible'
+                  description={description}
+                  nbrtomes={nbrtomes}
+
+              />
+              </div>
+            </StyledDiv>,
+          document.body
+        );
       }
 
-      return await response.json();
-  } catch (error) {
-      console.error("Erreur lors de la requête API:", error);
-      return null;
-  }
-}
-const Manga = ({ src, width, height, index,inMyList }: Props) => {
-  const [mangaOpen, setMangaOpen] = useState(false);
-  const [mangaData, setMangaData] = useState<MangaData | undefined>(undefined);
-  const [isHovered, setHovered] = useState(false);
-  const decodedSrc = decodeURIComponent(src);
 
-  const modal = () => {
-    if (typeof document === "undefined") return null; // ⚠️ Vérification côté serveur
-  
-    return createPortal(
-      <AnimatePresence>
-        {mangaOpen && (
-          <div
-            style={{ background: 'rgba(0,0,0,0.75)' }}
-            className="fixed inset-0 flex justify-center items-start overflow-y-auto z-50"
-            onClick={closeModal}
-          >
-            <motion.div
-              className="bg-[#141414] p-10 flex flex-col rounded-lg w-250 mt-20 overflow-auto z-10"
-              onClick={(e) => e.stopPropagation()}
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              exit={{ scale: 0 }}
-              transition={{ duration: 0.4 }}
-              layout
-            >
-              {mangaData && <MangaWindow
-                src={src}
-                index={index}
-                covers={mangaData.covers}
-                tags={mangaData.tags}
-                name={mangaData.name}
-                description={mangaData.description}
-                inMyList={inMyList}
-              />}
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>,
-      document.body // 🔥 Assure que `document.body` existe avant de l'utiliser
-    );
-  };
-
-  const openModal = () => {
-    setMangaOpen(true);
-    // Désactiver le scroll du body uniquement lorsque la modale est ouverte
-    document.body.style.overflow = 'hidden';
-  };
-
-  const closeModal = () => {
-    setMangaOpen(false);
-    // Réactiver le scroll du body lorsque la modale est fermée
-    document.body.style.overflow = 'auto';
-  };
-
-  useEffect(() => {
-
-    fetch('/api/manga/mangaWindow', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        cover:src
-      }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setMangaData(data);
-    })
-
-    // Réinitialiser le scroll du body au cas où le composant serait démonté
-    return () => {
-      document.body.style.overflow = 'auto';
-    };
-  }, [src]);
-
-
- 
 
   return (
     <>
-      <div className='flex flex-col items-center justify-center '
+       <StyledDiv width={220*1.1} height={320*1.1+75} className="flex flex-col items-center justify-start  relative pt-5"
         onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}>
-        {mangaData ?  (
-          <div 
-            className="flex flex-col items-center relative"  style={{ width: `${width}px`, height: `${height}px` }}>
+        onMouseLeave={() => setHovered(false)}
+      >
+           <StyledDiv width={220} height={320}  className="flex flex-col items-center relative "  >
             <Link 
-                onClick={()=>{if(!mangaData.historique) createHistorique({mangaName:mangaData.name,numero:1})}}
-                href={`/pages/private/lecture/${mangaData.name}/${mangaData.historique?.tomeNumero || 1}`}>
+                //onClick={()=>{if(!mangaData.historique) createHistorique({name:mangaData.name,numero:1})}}
+                href={`/pages/reading/${name}/Tome1`}>
               <Image
-                src={src}
-                alt={`manga-${index}`}
+                src={`http://localhost:8080/mangas/${name}/Tome1/1.png`}
+                alt={`manga`}
+                role="button"
                 fill
                 priority
-                className={`object-cover rounded-lg ${isHovered ? "outline-white scale-110 outline-4 transform transition-transform duration-600" : ""}`}
-              />
+                sizes='220px'
+                className={`object-cover rounded-lg cursor-pointer transform transition-transform duration-300 ${
+                  isHovered ? 'scale-110  outline-4 outline-white delay-150 ease-in' : 'ease-out'
+                }`}
+
+                    
+                />
+      
             </Link>
-          </div>
-        ):<Skeleton key={index} className='w-[220px] h-[320px] bg-zinc-700 rounded-lg'/>}
+          </StyledDiv>      
         {isHovered &&(
-            <div onClick={openModal} className='flex justify-center opacity-50 hover:opacity-100 transition-opacity duration-300 mt-4'>
+           <div onClick={() => setMangaOpen(true)} className='w-30 flex justify-center opacity-50 cursor-pointer hover:opacity-100 transition-opacity duration-300 absolute bottom-3'>
               <Image src="/down-arrow.png" alt="logo" width={50} height={50} className="invert" />
             </div>
 
         )}
-      </div>
-      {mangaOpen && mangaData && modal()}
+      </StyledDiv>
+      {mangaOpen  && Modal()
+         
+       }
     </>
   );
 };
 
-export default Manga;
+
+export const MangaGrid= ( {list} :{ list : MangaProps[] }) => {
+    return (
+        <div className="grid grid-cols-6 gap-x-10">
+          {list.map((element, index) => (
+            <StyledDiv width={220*1.1} height={320*1.1+75}   key={index} className="flex items-center justify-center ">
+              <Manga    {...element}  />
+            </StyledDiv>
+          ))}
+        </div>
+        
+    );
+  };
+  

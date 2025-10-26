@@ -1,0 +1,9 @@
+.git
+.gitignore
+.conf
+database/
+.vscode/
+.next/
+.idea/
+node_modules/
+script/

@@ -1,6 +1,6 @@
 // app/api/hello/route.ts
 import { NextResponse } from 'next/server'
-import pool from '@/script/mysql'
+import pool from 'lib/postgres'
 
 
 export async function GET() {

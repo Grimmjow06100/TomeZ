@@ -1,81 +1,44 @@
 "use client"
 import React from 'react'
-import { useEffect } from 'react'
-import { redirect } from 'next/navigation'
-import {Tome,TomeGrid} from '@/components/prototypes/Tome'
-import {Manga,MangaGrid} from'@/components/prototypes/Manga'
-import {BanderoleTomes,BanderoleMangas} from '@/components/prototypes/Banderoles'
-import NavBar from '@/components/prototypes/navBar'
-import { LoginForm,InscriptionForm } from '@/components/prototypes/form'
+import { BanderoleMangas } from '@/components/personal/Banderoles'
+import { useEffect,useState,useContext } from 'react'
+import { Suspense } from 'react'
+import { MangaProps } from '@/lib/interface'
+import NavBar from '@/components/personal/navBar'
+import VideoSwitcher from '@/components/personal/videoSwitcher'
 
+const HomePage = () => {
+  const [mangaData,setMangaData] =  useState<MangaProps[]|undefined>(undefined)
+  useEffect(( ) => {
+      fetch("/api/Manga")
+      .then((res) =>
+        res.json()
+        .then((data) => {
+          setMangaData(
+            data.mangas
+          )
+        })
+        
+      )
 
-
-const ScrollableBox = () => {
-  let TomeProps = {
-    src : "/1.png",
-    width:250,
-    height:350,
-    name:"s'en fou",
-    numero : 3,
-    deleteOption :{
-     handler :  ()=>{return},
-     index:1
-
-    }
-
-  };
-  let TomeGridProps = {
-    list : ["/1.png","/1.png","/1.png","/1.png","/1.png","/1.png","/1.png","/1.png","/1.png","/1.png","/1.png"],
-    mangaName :"demonSlayer"
-
-  }
-  let MangaProps = {
-    src : "/1.png",
-    width:250,
-    height:350,
-  }
-
-  let MangaGridProps = {
-
-    list : [{manga : MangaProps.src},{manga :MangaProps.src},{manga :MangaProps.src},{manga :MangaProps.src},{manga :MangaProps.src},{manga :MangaProps.src},{manga :MangaProps.src},{manga :MangaProps.src},{manga :MangaProps.src},{manga :MangaProps.src},{manga :MangaProps.src},{manga :MangaProps.src},{manga :MangaProps.src},{manga :MangaProps.src},{manga :MangaProps.src},{manga :MangaProps.src},{manga :MangaProps.src},{manga :MangaProps.src},{manga :MangaProps.src},{manga :MangaProps.src},{manga :MangaProps.src},{manga :MangaProps.src},{manga :MangaProps.src}]
-
-  }
-  let item = {
-    mangaName:"demonSlayer",
-    numero:7,
-    tome:"/1.png"
-  }
-  let ReadingProps = {
-    list:[item,item,item,item,item,item,item,item,item,item,item,item,item,item,item,item,item,item,item,item,item,item,item,item,item,item,item,item,item,item,item,item],
-    itemWidth:170,
-    itemHeight:220
-  }
-
-  let item2={
-     ...MangaGridProps, 
-     title: "Les Pépites",
-      itemWidth: 220, 
-      itemHeight: 320 
-  }
-  
-
+ 
+  },[])
+  const videos = [{videoName:"/videos/luffy.mp4",mangaName:"One Piece"}, {videoName:"/videos/byakuya.mp4",mangaName:"Bleach"},{videoName:"/videos/naruto.mp4",mangaName:"Naruto"},{videoName:"/videos/griffith.mp4",mangaName:"Berserk"},{videoName:"/videos/gogeta.mp4",mangaName:"DB Super"}];
+  const interval = 8000;
 
 
   return (
     <>
-    {/*<NavBar></NavBar>*/}
-    <div className="min-h-screen flex items-center justify-center">
-      {/*<Tome {...TomeProps} />*/}
-      {/* <TomeGrid  {...TomeGridProps} ></TomeGrid>*/}
-      {/*<Manga  {...MangaProps} ></Manga>*/}
-      {/* <MangaGrid {...MangaGridProps}></MangaGrid>*/}
-      {/*<BanderoleTomes {...ReadingProps}  > </BanderoleTomes>*/}
-      {/* <BanderoleMangas { ...item2 } > </BanderoleMangas>*/}
-      {/*<LoginForm ></LoginForm>*/}
-      <InscriptionForm></InscriptionForm>
-     
+     <div
+    className="relative w-full h-180 mb-15">
+            {/* Overlay avec effet de fondu en bas */}
+      <VideoSwitcher list={videos} interval={interval}></VideoSwitcher>
+      <NavBar></NavBar>
+
     </div>
-</>
-  );
+     {mangaData && <BanderoleMangas {...{title:"✨ Selection",list:mangaData }}/>}
+
+  </>
+  )
 }
-export default ScrollableBox;
+export default HomePage;

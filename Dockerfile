@@ -1,16 +1,20 @@
-FROM node:22.13.0
+# Utilise une image Node.js officielle (version 22.13.0)
+FROM node:latest
 
-# Créer un dossier de travail dans le conteneur
+# Définit le répertoire de travail dans le conteneur
 WORKDIR /app
 
-# Copier d’abord les fichiers de package (bonne pratique)
+# Copie uniquement les fichiers de dépendances pour optimiser le cache Docker
 COPY package*.json ./
 
-# Installer les dépendances
-RUN npm install
+# Installe les dépendances (npm ci est plus rapide et plus fiable en CI/CD)
+RUN npm ci
 
-# Copier ensuite tout le reste du code
+# Copie le reste du code source
 COPY . .
 
-# Lancer le serveur de développement
+# Expose le port utilisé par l'app (utile pour la documentation, pas obligatoire)
+EXPOSE 3001
+
+# Commande de démarrage (dev ou start selon l'environnement)
 CMD ["npm", "run", "dev"]

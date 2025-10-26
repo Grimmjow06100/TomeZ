@@ -13,30 +13,28 @@
     --color-gray-100: #f2f3f5;
     --color-background: #141414;
     --animate-grow: grow 0.3s ease-in-out ;
-    --animate-shrink:shrinkOut 0.3s ease-in-out;
+    --animate-shrink:shrink 0.3s ease-in-out;
     --animate-image:imageClick 0.3s ease-in-out;
+    --font-jacques:var(--font-jacques);
 
-
-    
     @keyframes grow {
       from {
         transform: scale(0);
-        opacity: 0;
       }
       to {
         transform: scale(1);
-        opacity: 1;
+
       }
     }
 
-    @keyframes shrinkOut {
+    @keyframes shrink {
       from {
         transform: scale(1);
-        opacity: 1;
+
       }
       to {
         transform: scale(0.5);
-        opacity: 0;
+
       }
     }
 
@@ -55,10 +53,6 @@
 
 
 }
-
-
-
-
 :root {
   --background:  #141414; 
   

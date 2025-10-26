@@ -2,86 +2,76 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
-
-interface Props {
-  src: string;
-  width: number;
-  height: number;
-  name:string;
-  numero:number; 
-  deleteOption?:{
-    handler:(index: number) => void
-    index:number
-  }
-
-}
+import { TomeProps } from '@/lib/interface';
+import { StyledDiv } from './style';
 
 
-async function updateHistorique(body: { mangaName: string; numero: number }) {
-  try {
-      const options = {
-          method:"PUT",
-          headers: {
-              "Content-Type": "application/json",
-          },
-          body: JSON.stringify(body),
-      };
-      const response = await fetch("/api/manga/historique/update", options);
-
-      if (!response.ok) {
-          throw new Error(`Erreur ${response.status}: ${response.statusText}`);
-      }
-
-      return await response.json();
-  } catch (error) {
-      console.error("Erreur lors de la requête API:", error);
-      return null;
-  }
-}
-
-
-
-
-
-function Tome({ src, width, height, numero, name, deleteOption }: Props) {
+export const Tome = ({ width, height, numero, name, deleteOption }: TomeProps) => {
 
   const [isHovered, setHovered] = useState(false);
+  
 
   return (
     <>
-      <div className="flex flex-col items-center justify-center"
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
+      <StyledDiv width={width*1.1} height={height*1.1+ (deleteOption ? 50 :0)} className="flex flex-col items-center justify-start  relative pt-5"
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
       >
-        < div className="flex flex-col items-center relative" style={{ width: `${width}px`, height: `${height}px` }}
-          
-        >
-            <Link onClick={() => updateHistorique({ mangaName: name, numero: numero })} href={`/pages/private/lecture/${name}/${numero}`}>
+        <StyledDiv width={width} height={height}  className="flex flex-col items-center relative "  >
+            <Link  href={`/pages/lecture/${name}/Tome${numero}`}>
               <Image
-                src={src}
+                src={`http://localhost:8080/mangas/${name}/Tome${numero}/1.png`}
                 alt={`tome-${numero}`}
+                role="button"
                 fill
                 priority
-                className={`object-cover rounded-lg ${isHovered ? "outline-white scale-110 outline-4 transform transition-transform duration-600" : ""}`} />
-              
+                className={`object-cover rounded-lg cursor-pointer active:scale-95 transform transition-transform duration-300 ${
+                  isHovered ? 'scale-110 outline-4 outline-white delay-150 ease-in' : 'ease-out'
+                }`}
+
+                />
             </Link>
-        </div>
-        {deleteOption && isHovered && (
-          <div onClick={()=> deleteOption.handler(deleteOption.index)} className='flex justify-center opacity-50 hover:opacity-100 transition-opacity duration-300 mt-5'>
-            <Image
-              src="/trash.png"
-              alt="delete-icon"
-              width={25}
-              height={25}
-              className="invert "
-            />
-          </div>
+        </StyledDiv >
+          {deleteOption && isHovered && (
+            <div className=' w-30 h-auto flex justify-center opacity-50  cursor-pointer hover:opacity-100 transition-opacity duration-300 absolute bottom-2'>
+              <Image
+                src="/trash.png"
+                alt="delete-icon"
+                role="button"
+                width={25}
+                height={25}
+                className="invert"
+              />
+            </div>
         )}
-      </div>
+        
+      </StyledDiv>
     </>
 
 
   );
+                
+                 
 }
 
-export default Tome;
+
+export const TomeGrid = ({ name ,nbrtomes}: {name:string,nbrtomes:number}) => {
+    return (
+        <div className="grid grid-cols-3 gap-10 mt-8 p-5">
+          {Array.from({length:nbrtomes},(_, index) => (
+            <StyledDiv width={275} height={325} key={index} className='flex  items-center'>
+              <div className =" h-full w-1/5 flex items-center justify-center">
+                <h1 className="text-gray-500 italic text-2xl">{index+1}</h1>
+              </div>
+              <div className="h-full w-4/5 flex items-center justify-center">
+                <Tome  name={name}  width={175} height={250} numero={index+1} />
+              </div>
+            </StyledDiv>
+          ))}
+        </div>
+    );
+  };
+  
+
+
+
