@@ -40,7 +40,7 @@
     "app/api/Manga/route.ts",
     ".next\\dev/types/**/*.ts",
     ".next\\dev/types/**/*.ts"
-  ],
+, "lib/constant.js"  ],
   "exclude": [
     "node_modules"
   ],
