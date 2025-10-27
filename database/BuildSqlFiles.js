@@ -4,7 +4,7 @@ import path from 'path';
 
 
 dotenv.config({ path: '.env.local' }); // Charge .env.local spécifiquement
-const root=process.env.MANGA_LOCAL
+const root=process.env.MANGA_PATH
 
 function InsertMangaName(erase=false){
   const filePath='database/init_scripts/03-data_dynamic.sql';
