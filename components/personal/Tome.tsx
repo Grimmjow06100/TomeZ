@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { TomeProps } from '@/lib/interface';
 import { StyledDiv } from './style';
+import {IMAGE_BASE_URL} from '@/lib/constant.js'
 
 
 export const Tome = ({ width, height, numero, name, deleteOption }: TomeProps) => {
@@ -20,7 +21,7 @@ export const Tome = ({ width, height, numero, name, deleteOption }: TomeProps) =
         <StyledDiv width={width} height={height}  className="flex flex-col items-center relative "  >
             <Link  href={`/reading/${name}/Tome${numero}`}>
               <Image
-                src={`http://localhost:8080/mangas/${name}/Tome${numero}/1.png`}
+                src={`${IMAGE_BASE_URL}/${name}/Tome${numero}/1.png`}
                 alt={`tome-${numero}`}
                 role="button"
                 fill

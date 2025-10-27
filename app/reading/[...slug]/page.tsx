@@ -7,7 +7,7 @@ import Image from 'next/image';
 import {TomeOption} from 'lib/interface.js';
 import { SingleValue, ActionMeta } from 'react-select';
 import TomeSelect from '@/components/personal/tomeSelect'
-
+import {IMAGE_BASE_URL} from '@/lib/constant'
 
 
 async function updateHistorique(body: {mangaName: string; numero: number }) {
@@ -139,7 +139,7 @@ const ReadingPage = (    {
                     return (
                             <Image
                             key={index}
-                            src={`http://localhost:8080/mangas/${mangaName}/${tomeString}/${index + 1}.png`}
+                            src={`${IMAGE_BASE_URL}/${mangaName}/${tomeString}/${index + 1}.png`}
                             alt={`image${index + 1}`}
                             width={0} // ou w-full via className
                             height={0}  // facultatif si tu veux que la hauteur s’adapte
