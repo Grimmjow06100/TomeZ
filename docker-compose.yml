@@ -9,19 +9,20 @@ services:
     container_name: tomez-app
     depends_on:
       - postgres
+      - nginx
     ports:
-      - "3001:3001"
+      - "3001:3000"
     networks:
       - tomez-network
   postgres:
-      image: postgres:latest
+      image: postgres:17
       container_name: tomez-postgres
       environment:
         POSTGRES_USER: samy
         POSTGRES_PASSWORD: root
         POSTGRES_DB: tomez
       expose:
-       - "5432"
+      - "5432"
       volumes:
         - ./database/data:/var/lib/postgresql/data
         - ./database/init-scripts:/docker-entrypoint-initdb.d

@@ -10,14 +10,17 @@ const NavBar = () => {
 
     return (
         <nav className="w-full top-0 left-0 fixed z-3 flex space-x-8 items-left py-4  mb-10 text-xl bg-gradient-to-t from-transparent to-black/80 ">
+            <Link href="/home">
             <button  className ="ml-5 flex items-center gap-x-1 cursor-pointer">
                 <Logo size={70} title={false}/>
                 <h1 className="font-jacques text-3xl font-bold hover:text-gray-300">TomeZ</h1>
             </button>
+            
+            </Link>
             <div className="flex items-center gap-x-3  ">
                 
                 <Image src="/home.png" alt="logo" width={35} height={35} className="invert "/>
-                <Link href="/ ">
+                <Link href="/home ">
                     <button className="
                     font-semibold
                     relative
@@ -42,7 +45,7 @@ const NavBar = () => {
     
             <div className="flex items-center gap-x-3  ">
                 <Image src="/search.png" alt="logo" width={35} height={35} className="invert"/>
-                <Link href={`/ `} >
+                <Link href={`/research `} >
                 <button className="
                 font-semibold
                 relative
@@ -66,7 +69,7 @@ const NavBar = () => {
             </div>
             <div className="flex items-center gap-x-3  ">
                 <Image src="/add.png" alt="logo" width={35} height={35} className="invert"/>
-                <Link href={`/ `} >
+                <Link href={`/mylist `} >
                 <button className="
                 font-semibold
                 relative 

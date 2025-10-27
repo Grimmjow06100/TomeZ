@@ -18,7 +18,7 @@ export const Tome = ({ width, height, numero, name, deleteOption }: TomeProps) =
         onMouseLeave={() => setHovered(false)}
       >
         <StyledDiv width={width} height={height}  className="flex flex-col items-center relative "  >
-            <Link  href={`/pages/lecture/${name}/Tome${numero}`}>
+            <Link  href={`/reading/${name}/Tome${numero}`}>
               <Image
                 src={`http://localhost:8080/mangas/${name}/Tome${numero}/1.png`}
                 alt={`tome-${numero}`}
@@ -28,7 +28,6 @@ export const Tome = ({ width, height, numero, name, deleteOption }: TomeProps) =
                 className={`object-cover rounded-lg cursor-pointer active:scale-95 transform transition-transform duration-300 ${
                   isHovered ? 'scale-110 outline-4 outline-white delay-150 ease-in' : 'ease-out'
                 }`}
-
                 />
             </Link>
         </StyledDiv >

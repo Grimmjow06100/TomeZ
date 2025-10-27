@@ -29,3 +29,8 @@ export interface VideosProps{
     }[];
     interval:number
 }
+
+export interface TomeOption {
+  value: number;
+  label: string;
+}

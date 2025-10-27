@@ -25,7 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr" className={jacques.variable}>
-      <body>
+      <body className="overflow-x-hidden">
         <div>
           {children }
         </div>

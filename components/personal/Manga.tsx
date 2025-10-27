@@ -80,7 +80,7 @@ export const Manga = ({ name,nbrtomes ,description,tags} : MangaProps ) => {
               onClick={handleClose}
             >
               <div
-                className={`bg-black opacity-90 p-10 flex flex-col  w-3/5  max-h-screen overflow-y-auto origin-top-left mt-20  z-4 ${
+                className={`bg-background opacity-90 p-10 flex flex-col  w-3/5  max-h-screen overflow-y-auto origin-top-left mt-20  z-4 ${
                 isClosing ? 'animate-shrink' : 'animate-grow'
                 }`}
                 onClick={(e) => e.stopPropagation()}
@@ -109,14 +109,13 @@ export const Manga = ({ name,nbrtomes ,description,tags} : MangaProps ) => {
            <StyledDiv width={220} height={320}  className="flex flex-col items-center relative "  >
             <Link 
                 //onClick={()=>{if(!mangaData.historique) createHistorique({name:mangaData.name,numero:1})}}
-                href={`/pages/reading/${name}/Tome1`}>
+                href={`/reading/${name}/Tome1`}>
               <Image
                 src={`http://localhost:8080/mangas/${name}/Tome1/1.png`}
                 alt={`manga`}
                 role="button"
                 fill
                 priority
-                sizes='220px'
                 className={`object-cover rounded-lg cursor-pointer transform transition-transform duration-300 ${
                   isHovered ? 'scale-110  outline-4 outline-white delay-150 ease-in' : 'ease-out'
                 }`}

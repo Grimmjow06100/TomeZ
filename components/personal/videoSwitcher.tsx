@@ -36,11 +36,11 @@ export default function VideoSwitcher({list,interval}:VideosProps) {
        <button 
           onClick={()=>{redirect(`/pages/reading/${list[current].mangaName}/Tome1`)}}
           className="absolute bottom-20 left-20 h-20 w-50 text-2xl  z-2 bg-white/10 backdrop-blur-sm p-4 rounded-lg outline-2
-          transform transition-transform duration-200 hover:scale-110 active:scale-90
+          transform transition-transform duration-200 hover:scale-110 active:scale-90 cursor-pointer
           ">Lire {list[current].mangaName}
       </button>
       {/* Overlay avec effet de fondu en bas */}
-      <div className="absolute bottom-0 left-0 w-full h-40 bg-gradient-to-t from-black/80 to-transparent z-1"></div>
+      <div className="absolute bottom-0 left-0 w-full h-40 bg-gradient-to-t from-black/80 to-transparent z-1 "></div>
     </>
   );
 }

@@ -2,15 +2,40 @@ import { useState } from "react";
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import {getBooleanFromStorage,safeGetList,removeElement} from "lib/utils"
 
-const AddToListButton = ({ name}: { name: string }) => {
-  const [added, setAdded] = useState<boolean>(false); // Par défaut, on charge après
+
+
+/*
+Tu veux que je t’aide à créer un hook useReadingList() qui encapsule tout ça avec add, remove, et isAdded ? Ce serait super clean pour ton projet manga.
+ */
+
+
+
+
+const AddToListButton = ({ name }: { name: string }) => {
+
+
+  const [added, setAdded] = useState<boolean>(getBooleanFromStorage(`manga-${name}`));
 
   const handleClick = async () => {
     setAdded(!added);
      // Sauvegarde immédiate dans localStorage
     localStorage.setItem(`manga-${name}`, JSON.stringify(!added));
-  
+
+    let newList: string[] = safeGetList('mylist')
+
+    if(!added){
+      console.log("ici")
+      newList.push(name)
+      localStorage.setItem('mylist',JSON.stringify(newList))
+    }
+    else {
+      newList=removeElement<string>(newList,name)
+      console.log(newList)
+      localStorage.setItem('mylist',JSON.stringify(newList))
+    }
+
   };
 
   return (
@@ -24,9 +49,9 @@ const AddToListButton = ({ name}: { name: string }) => {
         className="absolute w-full h-full "
       >
         {added ? (
-          <Image src="/check-icon.png" alt="check" fill className="object-cover invert"/>
+          <Image src="/check-icon.png" alt="check" fill className="object-cover cursor-pointer invert"/>
         ) : (
-          <Image src="/add-icon.png" alt="plus" fill className="object-cover invert"/>
+          <Image src="/add-icon.png" alt="plus" fill className="object-cover cursor-pointer invert"/>
         )}
       </motion.div>
     </button>
