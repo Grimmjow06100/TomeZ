@@ -16,8 +16,7 @@ const MangaWindow = ({description,tags,name,nbrtomes}:MangaProps) => {
         <div className='flex p-3 w-auto h-auto space-x-7 items-center'>
             <div className='flex flex-col w-130 items-center gap-y-5'>
                 <Image
-                   
-                    src={`${IMAGE_BASE_URL}/${name}/Tome1/1.png`}
+                    src={`http://localhost:8080/mangas/${name}/Tome1/1.png`}
                     alt={`manga`}
                     width={320}
                     height={420}
