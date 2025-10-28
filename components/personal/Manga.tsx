@@ -1,14 +1,17 @@
 "use client"
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { motion,AnimatePresence} from 'framer-motion';
 import Image from 'next/image';
 import {StyledDiv} from './style'
 import Link from 'next/link';
+import { Skeleton } from '../ui/skeleton';
 import { createPortal } from "react-dom";
 import {TomeGrid} from './Tome';
+import styled from "styled-components"
 import AddToListButton from './addButton';
 import { MangaProps } from '@/lib/interface';
 import {MangaName} from './style'
-import {IMAGE_BASE_URL}  from '@/lib/constant';
+import {IMAGE_BASE_URL} from '@/lib/constant'
 
 const MangaWindow = ({description,tags,name,nbrtomes}:MangaProps) => {
   return (
@@ -16,7 +19,7 @@ const MangaWindow = ({description,tags,name,nbrtomes}:MangaProps) => {
         <div className='flex p-3 w-auto h-auto space-x-7 items-center'>
             <div className='flex flex-col w-130 items-center gap-y-5'>
                 <Image
-                    src={`http://localhost:8080/mangas/${name}/Tome1/1.png`}
+                    src={`${IMAGE_BASE_URL}/${name}/Tome1/1.png`}
                     alt={`manga`}
                     width={320}
                     height={420}
@@ -108,7 +111,7 @@ export const Manga = ({ name,nbrtomes ,description,tags} : MangaProps ) => {
                 //onClick={()=>{if(!mangaData.historique) createHistorique({name:mangaData.name,numero:1})}}
                 href={`/reading/${name}/Tome1`}>
               <Image
-                src={`${IMAGE_BASE_URL}/${name}/Tome1/1.png`}
+                src={`http://localhost:8080/mangas/${name}/Tome1/1.png`}
                 alt={`manga`}
                 role="button"
                 fill

@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { TomeProps } from '@/lib/interface';
 import { StyledDiv } from './style';
-import {IMAGE_BASE_URL}  from '@/lib/constant';
+import {IMAGE_BASE_URL} from '@/lib/constant.js'
 
 
 export const Tome = ({ width, height, numero, name, deleteOption }: TomeProps) => {

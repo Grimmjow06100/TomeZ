@@ -1,0 +1,20 @@
+# Utilise une image Node.js officielle (version 22.13.0)
+FROM node:latest
+
+# Définit le répertoire de travail dans le conteneur
+WORKDIR /app
+
+# Copie uniquement les fichiers de dépendances pour optimiser le cache Docker
+COPY package*.json ./
+
+# Installe les dépendances (npm ci est plus rapide et plus fiable en CI/CD)
+RUN npm ci
+
+# Copie le reste du code source
+COPY . .
+
+# Expose le port utilisé par l'app (utile pour la documentation, pas obligatoire)
+EXPOSE 3001
+
+# Commande de démarrage (dev ou start selon l'environnement)
+CMD ["npm", "run", "dev"]

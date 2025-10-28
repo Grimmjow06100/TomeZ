@@ -7,8 +7,7 @@ import Image from 'next/image';
 import {TomeOption} from 'lib/interface.js';
 import { SingleValue, ActionMeta } from 'react-select';
 import TomeSelect from '@/components/personal/tomeSelect'
-import {IMAGE_BASE_URL}  from '@/lib/constant';
-
+import {IMAGE_BASE_URL} from '@/lib/constant'
 
 
 async function updateHistorique(body: {mangaName: string; numero: number }) {
