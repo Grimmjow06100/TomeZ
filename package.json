@@ -20,6 +20,7 @@
     "bootstrap": "^5.3.3",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "commander": "^14.0.2",
     "convict": "^6.2.4",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",

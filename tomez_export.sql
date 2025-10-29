@@ -1,0 +1,745 @@
+--
+-- PostgreSQL database dump
+--
+
+\restrict efTMZfWE0dsepFAgE4b5kYiDVfxDdyopzmHFcKFXb3a3TcDEElVo87I2ZBpVBmw
+
+-- Dumped from database version 18.0
+-- Dumped by pg_dump version 18.0
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET transaction_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- Name: manga; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.manga (
+    name character varying(191) NOT NULL,
+    description text NOT NULL,
+    nbrtomes integer DEFAULT 0 NOT NULL
+);
+
+
+ALTER TABLE public.manga OWNER TO postgres;
+
+--
+-- Name: mangatag; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.mangatag (
+    manganame character varying(191) NOT NULL,
+    taglabel character varying(191) NOT NULL
+);
+
+
+ALTER TABLE public.mangatag OWNER TO postgres;
+
+--
+-- Name: selection; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.selection (
+    title character varying(191) CONSTRAINT selection_selectionname_not_null NOT NULL,
+    manganame character varying(191) NOT NULL
+);
+
+
+ALTER TABLE public.selection OWNER TO postgres;
+
+--
+-- Name: tags; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.tags (
+    label character varying(191) CONSTRAINT tag_label_not_null NOT NULL
+);
+
+
+ALTER TABLE public.tags OWNER TO postgres;
+
+--
+-- Name: tome; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.tome (
+    manganame character varying(191) NOT NULL,
+    numero integer NOT NULL,
+    nbrpages integer NOT NULL
+);
+
+
+ALTER TABLE public.tome OWNER TO postgres;
+
+--
+-- Data for Name: manga; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.manga (name, description, nbrtomes) FROM stdin;
+Attaque des titans	Dans un monde ravagÃ© par des titans mangeurs dâ€™hommes, les derniers survivants de lâ€™humanitÃ© vivent retranchÃ©s derriÃ¨re dâ€™immenses murs. Eren, tÃ©moin de la mort de sa mÃ¨re, rejoint lâ€™armÃ©e pour se venger et dÃ©couvrir la vÃ©ritÃ© sur les titans et lâ€™origine de leur monde.	34
+Berserk	Guts, un guerrier solitaire marquÃ© par un destin tragique, affronte des dÃ©mons et des armÃ©es corrompues dans un univers mÃ©diÃ©val sombre et brutal. Berserk explore les thÃ¨mes de la vengeance, du sacrifice et de la lutte contre le destin.	42
+Bleach	Ichigo Kurosaki, un adolescent capable de voir les esprits, devient un Shinigami et doit protÃ©ger les vivants des Ã¢mes corrompues appelÃ©es Hollows. Bleach mÃªle combats surnaturels, rivalitÃ©s spirituelles et exploration du monde des morts.	55
+Dragon Ball	Dragon Ball suit les aventures de Son Goku, un garÃ§on dotÃ© dâ€™une force surhumaine, dans sa quÃªte des sept Dragon Balls. Il affronte des ennemis redoutables, dÃ©couvre ses origines extraterrestres et devient un hÃ©ros lÃ©gendaire.	34
+Dragon Ball Super	Dragon Ball Super poursuit les aventures de Goku et Vegeta aprÃ¨s la dÃ©faite de Majin Buu. De nouveaux ennemis cosmiques apparaissent, comme Beerus le dieu de la destruction, et les hÃ©ros atteignent des niveaux de puissance divins.	20
+Fairy Tail	Fairy Tail raconte les aventures de Natsu Dragnir et de sa guilde de mages excentriques. Ensemble, ils affrontent des ennemis puissants, protÃ¨gent leurs amis et dÃ©fendent les valeurs de lâ€™amitiÃ© et du courage dans un monde magique.	63
+Naruto	Naruto Uzumaki est un jeune ninja rejetÃ© par son village, porteur dâ€™un dÃ©mon renard en lui. Il rÃªve de devenir Hokage, le chef respectÃ© de son village, et traverse de nombreuses Ã©preuves pour gagner la reconnaissance et protÃ©ger ses proches.	72
+One Piece	One Piece suit Monkey D. Luffy, un pirate au corps Ã©lastique, dans sa quÃªte du trÃ©sor lÃ©gendaire appelÃ© One Piece. AccompagnÃ© de son Ã©quipage, il explore des Ã®les fantastiques, affronte des adversaires redoutables et poursuit son rÃªve de devenir le roi des pirates.	106
+\.
+
+
+--
+-- Data for Name: mangatag; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.mangatag (manganame, taglabel) FROM stdin;
+Attaque des titans	Action
+Attaque des titans	Drame
+Attaque des titans	Fantasy
+Attaque des titans	Post-apocalyptique
+Attaque des titans	Psychologique
+Attaque des titans	Thriller
+Attaque des titans	TragÃ©die
+Berserk	Action
+Berserk	Drame
+Berserk	Fantasy
+Berserk	Gore
+Berserk	Historique
+Berserk	Psychologique
+Berserk	Seinen
+Berserk	TragÃ©die
+Bleach	Action
+Bleach	Aventure
+Bleach	Fantasy
+Bleach	MystÃ¨re
+Bleach	Shonen
+Bleach	Supernaturel
+Dragon Ball	Action
+Dragon Ball	Arts Martiaux
+Dragon Ball	Aventure
+Dragon Ball	ComÃ©die
+Dragon Ball	Fantasy
+Dragon Ball	Shonen
+Dragon Ball Super	Action
+Dragon Ball Super	Arts Martiaux
+Dragon Ball Super	Aventure
+Dragon Ball Super	Fantasy
+Dragon Ball Super	Science-fiction
+Dragon Ball Super	Shonen
+Fairy Tail	Action
+Fairy Tail	Aventure
+Fairy Tail	ComÃ©die
+Fairy Tail	Fantasy
+Fairy Tail	Magie
+Fairy Tail	Shonen
+Naruto	Action
+Naruto	Arts Martiaux
+Naruto	Aventure
+Naruto	ComÃ©die
+Naruto	Fantasy
+Naruto	School Life
+Naruto	Shonen
+One Piece	Action
+One Piece	Aventure
+One Piece	ComÃ©die
+One Piece	Fantasy
+One Piece	MystÃ¨re
+One Piece	Shonen
+\.
+
+
+--
+-- Data for Name: selection; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.selection (title, manganame) FROM stdin;
+Selection	Attaque des titans
+Selection	Berserk
+Selection	Bleach
+Selection	Dragon Ball
+Selection	Dragon Ball Super
+Selection	Fairy Tail
+Selection	Naruto
+Selection	One Piece
+\.
+
+
+--
+-- Data for Name: tags; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.tags (label) FROM stdin;
+Action
+Aliens
+Arts Martiaux
+Aventure
+ComÃ©die
+Culinaire
+Cyberpunk
+Drame
+Ecchi
+Fantasy
+Gore
+Harem
+Hentai
+Historique
+Horreur
+Idols
+Isekai
+Jeux
+Josei
+Magie
+Mecha
+Militaire
+Musical
+MystÃ¨re
+Parodie
+Policier
+Post-apocalyptique
+Psychologique
+Romance
+SamouraÃ¯
+School Life
+Science-fiction
+Seinen
+Shojo
+Shojo Ai
+Shonen
+Shonen Ai
+Slice of Life
+Sports
+Steampunk
+Supernaturel
+Thriller
+TragÃ©die
+Vampires
+Voyage Temporel
+Yaoi
+Yuri
+\.
+
+
+--
+-- Data for Name: tome; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.tome (manganame, numero, nbrpages) FROM stdin;
+Attaque des titans	1	194
+Attaque des titans	2	191
+Attaque des titans	3	200
+Attaque des titans	4	195
+Attaque des titans	5	195
+Attaque des titans	6	190
+Attaque des titans	7	193
+Attaque des titans	8	192
+Attaque des titans	9	194
+Attaque des titans	10	192
+Attaque des titans	11	193
+Attaque des titans	12	193
+Attaque des titans	13	198
+Attaque des titans	14	198
+Attaque des titans	15	192
+Attaque des titans	16	187
+Attaque des titans	17	190
+Attaque des titans	18	192
+Attaque des titans	19	195
+Attaque des titans	20	190
+Attaque des titans	21	197
+Attaque des titans	22	195
+Attaque des titans	23	191
+Attaque des titans	24	197
+Attaque des titans	25	186
+Attaque des titans	26	190
+Attaque des titans	27	193
+Attaque des titans	28	192
+Attaque des titans	29	184
+Attaque des titans	30	176
+Attaque des titans	31	181
+Attaque des titans	32	174
+Attaque des titans	33	174
+Attaque des titans	34	235
+Berserk	1	226
+Berserk	2	237
+Berserk	3	236
+Berserk	4	237
+Berserk	5	237
+Berserk	6	225
+Berserk	7	236
+Berserk	8	236
+Berserk	9	239
+Berserk	10	239
+Berserk	11	238
+Berserk	12	238
+Berserk	13	241
+Berserk	14	241
+Berserk	15	237
+Berserk	16	237
+Berserk	17	242
+Berserk	18	239
+Berserk	19	239
+Berserk	20	239
+Berserk	21	255
+Berserk	22	221
+Berserk	23	207
+Berserk	24	207
+Berserk	25	222
+Berserk	26	224
+Berserk	27	225
+Berserk	28	224
+Berserk	29	225
+Berserk	30	210
+Berserk	31	209
+Berserk	32	241
+Berserk	33	241
+Berserk	34	238
+Berserk	35	225
+Berserk	36	208
+Berserk	37	231
+Berserk	38	210
+Berserk	39	186
+Berserk	40	178
+Berserk	41	178
+Berserk	42	194
+Bleach	1	192
+Bleach	2	192
+Bleach	3	191
+Bleach	4	193
+Bleach	5	191
+Bleach	6	192
+Bleach	7	208
+Bleach	8	204
+Bleach	9	193
+Bleach	10	201
+Bleach	11	209
+Bleach	12	192
+Bleach	13	208
+Bleach	14	207
+Bleach	15	192
+Bleach	16	192
+Bleach	17	208
+Bleach	18	191
+Bleach	19	207
+Bleach	20	192
+Bleach	21	202
+Bleach	22	191
+Bleach	23	192
+Bleach	24	193
+Bleach	25	207
+Bleach	26	193
+Bleach	27	192
+Bleach	28	191
+Bleach	29	215
+Bleach	30	192
+Bleach	31	191
+Bleach	32	192
+Bleach	33	192
+Bleach	34	214
+Bleach	35	208
+Bleach	36	199
+Bleach	37	192
+Bleach	38	191
+Bleach	39	208
+Bleach	40	191
+Bleach	41	189
+Bleach	42	191
+Bleach	43	191
+Bleach	44	189
+Bleach	45	191
+Bleach	46	213
+Bleach	47	189
+Bleach	48	189
+Bleach	49	203
+Bleach	50	188
+Bleach	51	200
+Bleach	52	187
+Bleach	53	205
+Bleach	54	208
+Bleach	55	240
+Dragon Ball	1	230
+Dragon Ball	2	235
+Dragon Ball	3	241
+Dragon Ball	4	238
+Dragon Ball	5	238
+Dragon Ball	6	239
+Dragon Ball	7	234
+Dragon Ball	8	238
+Dragon Ball	9	234
+Dragon Ball	10	234
+Dragon Ball	11	234
+Dragon Ball	12	234
+Dragon Ball	13	234
+Dragon Ball	14	234
+Dragon Ball	15	234
+Dragon Ball	16	234
+Dragon Ball	17	236
+Dragon Ball	18	234
+Dragon Ball	19	236
+Dragon Ball	20	234
+Dragon Ball	21	230
+Dragon Ball	22	240
+Dragon Ball	23	242
+Dragon Ball	24	242
+Dragon Ball	25	238
+Dragon Ball	26	250
+Dragon Ball	27	238
+Dragon Ball	28	230
+Dragon Ball	29	248
+Dragon Ball	30	234
+Dragon Ball	31	244
+Dragon Ball	32	242
+Dragon Ball	33	242
+Dragon Ball	34	258
+Dragon Ball Super	1	192
+Dragon Ball Super	2	226
+Dragon Ball Super	3	210
+Dragon Ball Super	4	210
+Dragon Ball Super	5	194
+Dragon Ball Super	6	194
+Dragon Ball Super	7	194
+Dragon Ball Super	8	211
+Dragon Ball Super	9	194
+Dragon Ball Super	10	194
+Dragon Ball Super	11	194
+Dragon Ball Super	12	194
+Dragon Ball Super	13	196
+Dragon Ball Super	14	196
+Dragon Ball Super	15	196
+Dragon Ball Super	16	196
+Dragon Ball Super	17	196
+Dragon Ball Super	18	195
+Dragon Ball Super	19	195
+Dragon Ball Super	20	195
+Fairy Tail	1	197
+Fairy Tail	2	197
+Fairy Tail	3	197
+Fairy Tail	4	197
+Fairy Tail	5	197
+Fairy Tail	6	197
+Fairy Tail	7	197
+Fairy Tail	8	196
+Fairy Tail	9	197
+Fairy Tail	10	197
+Fairy Tail	11	196
+Fairy Tail	12	203
+Fairy Tail	13	197
+Fairy Tail	14	195
+Fairy Tail	15	195
+Fairy Tail	16	195
+Fairy Tail	17	195
+Fairy Tail	18	195
+Fairy Tail	19	195
+Fairy Tail	20	195
+Fairy Tail	21	195
+Fairy Tail	22	195
+Fairy Tail	23	203
+Fairy Tail	24	175
+Fairy Tail	25	195
+Fairy Tail	26	195
+Fairy Tail	27	195
+Fairy Tail	28	195
+Fairy Tail	29	205
+Fairy Tail	30	195
+Fairy Tail	31	205
+Fairy Tail	32	195
+Fairy Tail	33	195
+Fairy Tail	34	195
+Fairy Tail	35	203
+Fairy Tail	36	196
+Fairy Tail	37	203
+Fairy Tail	38	203
+Fairy Tail	39	213
+Fairy Tail	40	205
+Fairy Tail	41	194
+Fairy Tail	42	192
+Fairy Tail	43	194
+Fairy Tail	44	202
+Fairy Tail	45	197
+Fairy Tail	46	191
+Fairy Tail	47	192
+Fairy Tail	48	194
+Fairy Tail	49	198
+Fairy Tail	50	198
+Fairy Tail	51	194
+Fairy Tail	52	192
+Fairy Tail	53	198
+Fairy Tail	54	198
+Fairy Tail	55	198
+Fairy Tail	56	198
+Fairy Tail	57	198
+Fairy Tail	58	214
+Fairy Tail	59	198
+Fairy Tail	60	198
+Fairy Tail	61	198
+Fairy Tail	62	195
+Fairy Tail	63	221
+Naruto	1	187
+Naruto	2	175
+Naruto	3	180
+Naruto	4	182
+Naruto	5	182
+Naruto	6	175
+Naruto	7	179
+Naruto	8	184
+Naruto	9	182
+Naruto	10	182
+Naruto	11	177
+Naruto	12	56
+Naruto	13	181
+Naruto	14	202
+Naruto	15	180
+Naruto	16	180
+Naruto	17	180
+Naruto	18	184
+Naruto	19	167
+Naruto	20	181
+Naruto	21	182
+Naruto	22	181
+Naruto	23	201
+Naruto	24	181
+Naruto	25	179
+Naruto	26	177
+Naruto	27	183
+Naruto	28	182
+Naruto	29	189
+Naruto	30	182
+Naruto	31	181
+Naruto	32	179
+Naruto	33	182
+Naruto	34	178
+Naruto	35	185
+Naruto	36	184
+Naruto	37	180
+Naruto	38	232
+Naruto	39	189
+Naruto	40	186
+Naruto	41	183
+Naruto	42	185
+Naruto	43	192
+Naruto	44	166
+Naruto	45	180
+Naruto	46	187
+Naruto	47	185
+Naruto	48	202
+Naruto	49	183
+Naruto	50	181
+Naruto	51	200
+Naruto	52	186
+Naruto	53	182
+Naruto	54	197
+Naruto	55	174
+Naruto	56	181
+Naruto	57	169
+Naruto	58	214
+Naruto	59	180
+Naruto	60	92
+Naruto	61	174
+Naruto	62	181
+Naruto	63	178
+Naruto	64	170
+Naruto	65	173
+Naruto	66	199
+Naruto	67	210
+Naruto	68	194
+Naruto	69	196
+Naruto	70	146
+Naruto	71	183
+Naruto	72	186
+One Piece	1	210
+One Piece	2	209
+One Piece	3	200
+One Piece	4	193
+One Piece	5	192
+One Piece	6	192
+One Piece	7	194
+One Piece	8	191
+One Piece	9	207
+One Piece	10	191
+One Piece	11	213
+One Piece	12	197
+One Piece	13	194
+One Piece	14	226
+One Piece	15	193
+One Piece	16	196
+One Piece	17	212
+One Piece	18	191
+One Piece	19	191
+One Piece	20	192
+One Piece	21	193
+One Piece	22	214
+One Piece	23	189
+One Piece	24	209
+One Piece	25	226
+One Piece	26	210
+One Piece	27	210
+One Piece	28	191
+One Piece	29	210
+One Piece	30	230
+One Piece	31	210
+One Piece	32	209
+One Piece	33	194
+One Piece	34	193
+One Piece	35	193
+One Piece	36	239
+One Piece	37	208
+One Piece	38	207
+One Piece	39	208
+One Piece	40	226
+One Piece	41	239
+One Piece	42	191
+One Piece	43	207
+One Piece	44	239
+One Piece	45	207
+One Piece	46	207
+One Piece	47	224
+One Piece	48	226
+One Piece	49	207
+One Piece	50	208
+One Piece	51	226
+One Piece	52	208
+One Piece	53	202
+One Piece	54	208
+One Piece	55	226
+One Piece	56	228
+One Piece	57	206
+One Piece	58	226
+One Piece	59	208
+One Piece	60	208
+One Piece	61	208
+One Piece	62	192
+One Piece	63	204
+One Piece	64	208
+One Piece	65	204
+One Piece	66	204
+One Piece	67	208
+One Piece	68	196
+One Piece	69	212
+One Piece	70	232
+One Piece	71	208
+One Piece	72	206
+One Piece	73	207
+One Piece	74	224
+One Piece	75	223
+One Piece	76	255
+One Piece	77	205
+One Piece	78	224
+One Piece	79	207
+One Piece	80	208
+One Piece	81	226
+One Piece	82	204
+One Piece	83	207
+One Piece	84	239
+One Piece	85	203
+One Piece	86	191
+One Piece	87	205
+One Piece	88	208
+One Piece	89	224
+One Piece	90	208
+One Piece	91	192
+One Piece	92	186
+One Piece	93	208
+One Piece	94	210
+One Piece	95	195
+One Piece	96	225
+One Piece	97	195
+One Piece	98	223
+One Piece	99	195
+One Piece	100	210
+One Piece	101	211
+One Piece	102	210
+One Piece	103	194
+One Piece	104	194
+One Piece	105	195
+One Piece	106	197
+\.
+
+
+--
+-- Name: manga manga_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.manga
+    ADD CONSTRAINT manga_pkey PRIMARY KEY (name);
+
+
+--
+-- Name: mangatag mangatag_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.mangatag
+    ADD CONSTRAINT mangatag_pkey PRIMARY KEY (manganame, taglabel);
+
+
+--
+-- Name: selection selection_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.selection
+    ADD CONSTRAINT selection_pkey PRIMARY KEY (title, manganame);
+
+
+--
+-- Name: tags tag_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tags
+    ADD CONSTRAINT tag_pkey PRIMARY KEY (label);
+
+
+--
+-- Name: tome tome_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tome
+    ADD CONSTRAINT tome_pkey PRIMARY KEY (manganame, numero);
+
+
+--
+-- Name: mangatag mangatag_manganame_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.mangatag
+    ADD CONSTRAINT mangatag_manganame_fkey FOREIGN KEY (manganame) REFERENCES public.manga(name) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- Name: mangatag mangatag_taglabel_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.mangatag
+    ADD CONSTRAINT mangatag_taglabel_fkey FOREIGN KEY (taglabel) REFERENCES public.tags(label) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- Name: selection selection_manganame_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.selection
+    ADD CONSTRAINT selection_manganame_fkey FOREIGN KEY (manganame) REFERENCES public.manga(name) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- Name: tome tome_manganame_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tome
+    ADD CONSTRAINT tome_manganame_fkey FOREIGN KEY (manganame) REFERENCES public.manga(name) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- PostgreSQL database dump complete
+--
+
+\unrestrict efTMZfWE0dsepFAgE4b5kYiDVfxDdyopzmHFcKFXb3a3TcDEElVo87I2ZBpVBmw
+
