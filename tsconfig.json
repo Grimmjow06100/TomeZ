@@ -3,7 +3,7 @@
     "forceConsistentCasingInFileNames": true,
     "paths": {
       "@/*": [
-        "./*"
+        "./src/*"
       ]
     },
     "baseUrl": ".",
